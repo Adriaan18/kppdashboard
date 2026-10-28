@@ -1,10 +1,11 @@
 # PK mirror status
 
-**Version:** 1.1.0 · **Date:** 2026-10-29 · **Author:** Adriaan
+**Version:** 1.2.0 · **Date:** 2026-10-29 · **Author:** Adriaan
 
 The PK of the claude.ai Project "KPP Dashboard & PLC" is mirrored into `docs\` byte for byte, at the same versioned filenames, in housekeeping passes. Once a large harness or builder is safe here, it is retired from PK and the PK index points to this repo.
 
 **History**
+- 1.2.0 2026-10-29 - Knowledge Index 1.53.0 - 1.60.0 (1.53.0, 1.54.0, 1.56.0, 1.58.0 then removed from PK); the 1.60.0 builder.
 - 1.1.0 2026-10-29 - the 28 Oct session: its PK docs and its source extracts (BoothHMI, HydPumpWatch, Shared, TestBench).
 - 1.0.0 2026-10-26 - repo set-up.
 
@@ -16,6 +17,12 @@ The PK of the claude.ai Project "KPP Dashboard & PLC" is mirrored into `docs\` b
 | `DashboardandPLC_Raw_Log_2026-10-28_B_v1_0_0.md` | `claude/` |
 | `DashboardandPLC_Raw_Log_2026-10-28_B_v1_1_0.md` | `claude/` |
 | `KPP_HydPumpWatch_Design_v1_2_0.md` | `claude/` |
+| `DashboardandPLC_Knowledge_Index_v1_53_0.md` | root - removed from PK 29 Oct |
+| `DashboardandPLC_Knowledge_Index_v1_54_0.md` | root and `claude/` (the two identical) - removed from PK 29 Oct |
+| `DashboardandPLC_Knowledge_Index_v1_56_0.md` | `claude/` - removed from PK 29 Oct |
+| `DashboardandPLC_Knowledge_Index_v1_58_0.md` | `claude/` - removed from PK 29 Oct |
+| `DashboardandPLC_Knowledge_Index_v1_59_0.md` | `claude/` |
+| `DashboardandPLC_Knowledge_Index_v1_60_0.md` | `claude/` |
 
 Still to mirror: the rest of PK, up to `DashboardandPLC_Knowledge_Index_v1_59_0.md` (the full first pass). Some names sit in PK both at the root and under `claude/`, and a few root names twice - that pass compares each pair before the flat mirror keeps one.
 
@@ -40,6 +47,9 @@ Each slice holds its deliverables at their delivered filenames (`file -> Ignitio
 
 ### Shared (28 Oct)
 - `shared_purge_v1_2_0.py` -> `shared/purge` [1.1.0] - adds the job "HMI alarm history" (30 days)
+
+### KnowledgeIndex (29 Oct)
+- `build_2026-10-29\`: `patch_index_1_60_0.py` - the final 1.60.0 from the 28 Oct draft (2026-10-28_A 1.0.0 only) - the whole session, the repo, the removals.
 
 ### TestBench (28 Oct)
 - `build_2026-10-28\`: `harness.py` (an off-gateway stand-in for Ignition 8.3 / Jython 2.7: `java.*`, `system.*`, a virtual clock, `system.db` on a local PostgreSQL 16 - port 55432, `pg_up.sh` - and the project modules loaded from source through lib2to3), `plcsim.py` (a scan-level model of the isolation-group reset logic, parsed from `KPP_COS_V20T.L5K`), `py2check.py` (Python 2.7 grammar). The BoothHMI and HydPumpWatch tests of the same date import them.
