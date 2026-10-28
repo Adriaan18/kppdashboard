@@ -1,0 +1,201 @@
+{
+  "custom": {
+    "allowed": true,
+    "areaText": "Debarker",
+    "button": "(I:70/17) Message Acknowledge",
+    "path": "[TL-KPPWS01-01]KPP/StemDB/Data/ScreenData/MessageAck",
+    "sentAt": 0,
+    "state": 2,
+    "version": "1.1.0"
+  },
+  "params": {
+    "Area": "SDB"
+  },
+  "propConfig": {
+    "custom.allowed": {
+      "binding": {
+        "config": {
+          "expression": "isAuthorized(false, \u0027Authenticated/Roles/Engineer\u0027, \u0027Authenticated/Roles/Sparky\u0027)"
+        },
+        "type": "expr"
+      },
+      "persistent": true
+    },
+    "custom.areaText": {
+      "binding": {
+        "config": {
+          "expression": "case({view.params.Area}, \u0027SDB\u0027, \u0027Debarker\u0027, \u0027GRA\u0027, \u0027Grading\u0027, \u0027COS\u0027, \u0027COS\u0027, \u0027CHP\u0027, \u0027Chippers\u0027, \u0027\u0027)"
+        },
+        "type": "expr"
+      },
+      "persistent": true
+    },
+    "custom.button": {
+      "binding": {
+        "config": {
+          "expression": "case({view.params.Area}, \u0027SDB\u0027, \u0027(I:70/17) Message Acknowledge\u0027, \u0027GRA\u0027, \u0027(I:20/17) Message Acknowledge\u0027, \u0027COS\u0027, \u0027(I:21/16) Fault Reset\u0027, \u0027CHP\u0027, \u0027(I:010/17) Message Acknowledge\u0027, \u0027\u0027)"
+        },
+        "type": "expr"
+      },
+      "persistent": true
+    },
+    "custom.path": {
+      "binding": {
+        "config": {
+          "expression": "case({view.params.Area}, \u0027SDB\u0027, \u0027[TL-KPPWS01-01]KPP/StemDB/Data/ScreenData/MessageAck\u0027, \u0027GRA\u0027, \u0027[TL-KPPWS01-01]KPP/Grader/Data/ScreenData/MessageAck\u0027, \u0027COS\u0027, \u0027[TL-KPPWS01-01]KPP/COS/Area/Data/ScreenData/MessageAck\u0027, \u0027CHP\u0027, \u0027[TL-KPPWS01-01]KPP/Chippers/Data/ScreenData/MessageAck\u0027, \u0027\u0027)"
+        },
+        "type": "expr"
+      },
+      "persistent": true
+    },
+    "custom.sentAt": {
+      "persistent": true
+    },
+    "custom.state": {
+      "binding": {
+        "config": {
+          "expression": "if(!{view.custom.allowed}, 3, try(if(len({view.custom.path}) \u003d 0, 0, if(isGood(tag({view.custom.path})), if(coalesce(tag({view.custom.path}), false), 2, 1), 0)), 0))"
+        },
+        "type": "expr"
+      },
+      "persistent": true
+    },
+    "custom.version": {
+      "persistent": true
+    },
+    "params.Area": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 30,
+      "width": 150
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Icon"
+        },
+        "position": {
+          "basis": "16px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.color": {
+            "binding": {
+              "config": {
+                "expression": "if({view.custom.state} \u003d 2 || {view.custom.state} \u003d 3, \u0027#242E30\u0027, \u0027#FFFFFF\u0027)"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "path": "material/done_all",
+          "style": {
+            "height": "16px",
+            "width": "16px"
+          }
+        },
+        "type": "ia.display.icon"
+      },
+      {
+        "meta": {
+          "name": "Text"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.style.color": {
+            "binding": {
+              "config": {
+                "expression": "if({view.custom.state} \u003d 2 || {view.custom.state} \u003d 3, \u0027#242E30\u0027, \u0027#FFFFFF\u0027)"
+              },
+              "type": "expr"
+            }
+          },
+          "props.text": {
+            "binding": {
+              "config": {
+                "expression": "if({view.custom.state} \u003d 2, \u0027ACK SENT\u0027, \u0027MESSAGE ACK\u0027)"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "fontSize": "12.5px",
+            "fontWeight": 700,
+            "letterSpacing": "0.04em",
+            "lineHeight": "16px",
+            "whiteSpace": "nowrap"
+          }
+        },
+        "type": "ia.display.label"
+      }
+    ],
+    "events": {
+      "dom": {
+        "onClick": {
+          "config": {
+            "script": "\t# Engineer / Sparky only (the button is hidden for everyone else - checked again here)\n\tif not system.perspective.isAuthorized(False, [\u0027Authenticated/Roles/Engineer\u0027, \u0027Authenticated/Roles/Sparky\u0027]):\n\t\treturn\n\tpath \u003d self.view.custom.path\n\tif not path:\n\t\treturn\n\t# 1.0.1: one press per 1.5 s, and the HMI writes False 1 s after the press (the PLC clears it after 1 s\n\t# too) - otherwise the tag keeps the written True when the 1 s pulse falls between two tag group polls\n\tnow \u003d system.date.now().getTime()\n\tif now - (self.view.custom.sentAt or 0) \u003c 1500:\n\t\treturn\n\tself.view.custom.sentAt \u003d now\n\tarea \u003d self.view.params.Area\n\tuser \u003d self.session.props.auth.user.userName\n\tq \u003d system.tag.writeBlocking([path], [True])[0]\n\tsystem.util.getLogger(\u0027booth.msgack\u0027).info(\u0027Message acknowledge %s by %s: %s\u0027 % (area, user, q))\n\tif not q.isGood():\n\t\treturn\n\t# 1.1.0: each press goes into the HMI alarm history (forensics.alarmHistory) with who and which screen\n\tstation \u003d str(self.page.props.path)\n\tareaText \u003d str(self.view.custom.areaText)\n\tbutton \u003d str(self.view.custom.button)\n\n\tdef release(path\u003dpath, area\u003darea, user\u003duser, station\u003dstation, areaText\u003dareaText, button\u003dbutton):\n\t\timport time\n\t\ttime.sleep(1.0)\n\t\tq2 \u003d system.tag.writeBlocking([path], [False])[0]\n\t\tif not q2.isGood():\n\t\t\tsystem.util.getLogger(\u0027booth.msgack\u0027).warn(\u0027Message acknowledge %s release: %s\u0027 % (area, q2))\n\t\ttry:\n\t\t\tforensics.alarmHistory.logAction(\u0027msgack\u0027, area, \u0027MESSAGE ACK - \u0027 + areaText, value\u003d\u0027SENT\u0027, who\u003duser,\n\t\t\t\tstation\u003dstation, detail\u003dbutton, source\u003dpath)\n\t\texcept:\n\t\t\tpass\n\tsystem.util.invokeAsynchronous(release)"
+          },
+          "scope": "G",
+          "type": "script"
+        }
+      }
+    },
+    "meta": {
+      "name": "root",
+      "tooltip": {
+        "enabled": true
+      }
+    },
+    "propConfig": {
+      "meta.tooltip.text": {
+        "binding": {
+          "config": {
+            "expression": "case({view.custom.state}, 1, \u0027Message Acknowledge for \u0027 + {view.custom.areaText} + \u0027 - the same as the console button \u0027 + {view.custom.button} + \u0027. Engineer and Sparky only.\u0027, 2, \u0027Sent - the PLC holds the console button on for 1 s\u0027, 3, \u0027Engineer and Sparky only\u0027, \u0027The PLC request tag is not installed yet (\u0027 + {view.custom.path} + \u0027)\u0027)"
+          },
+          "type": "expr"
+        }
+      },
+      "props.style.backgroundColor": {
+        "binding": {
+          "config": {
+            "expression": "case({view.custom.state}, 1, \u0027#004063\u0027, 2, \u0027#F2C200\u0027, 3, \u0027#DDE1E1\u0027, \u0027#9AA3A5\u0027)"
+          },
+          "type": "expr"
+        }
+      },
+      "props.style.borderColor": {
+        "binding": {
+          "config": {
+            "expression": "case({view.custom.state}, 1, \u0027#004063\u0027, 2, \u0027#F2C200\u0027, 3, \u0027#DDE1E1\u0027, \u0027#9AA3A5\u0027)"
+          },
+          "type": "expr"
+        }
+      }
+    },
+    "props": {
+      "alignItems": "center",
+      "justify": "center",
+      "style": {
+        "border": "1px solid #004063",
+        "borderRadius": "6px",
+        "boxSizing": "border-box",
+        "cursor": "pointer",
+        "gap": "8px",
+        "overflow": "hidden",
+        "padding": "0px 12px"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

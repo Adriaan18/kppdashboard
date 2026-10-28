@@ -1,0 +1,2861 @@
+{
+  "custom": {
+    "eng": {
+      "comms": 1,
+      "cosConn": 1,
+      "errTotal": 0,
+      "faultActive": 0,
+      "hs_stem": 0,
+      "hs_vax1": 0,
+      "hs_vax2": 0,
+      "mode": "CUTOVER",
+      "okTotal": 0,
+      "resendTotal": 0,
+      "running": 0,
+      "stateText": "STOPPED",
+      "stemErr": 0,
+      "stemOk": 0,
+      "stemResend": 0,
+      "vax1Err": 0,
+      "vax1Ok": 0,
+      "vax1Resend": 0,
+      "vax2Err": 0,
+      "vax2Ok": 0,
+      "vax2Resend": 0
+    }
+  },
+  "params": {},
+  "propConfig": {
+    "custom.eng": {
+      "binding": {
+        "config": {
+          "expression": "runScript(\"forensics.stemEngine.status\", 1000, \"CUTOVER\")"
+        },
+        "type": "expr"
+      },
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 1014,
+      "width": 1920
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Kicker"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "KAINGAROA TIPU · PLANT SAFETY",
+                  "textStyle": {
+                    "color": "#DEBF7A",
+                    "fontSize": 9,
+                    "fontWeight": "700",
+                    "letterSpacing": "2px"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Title"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "Plant Safety Overview",
+                  "textStyle": {
+                    "color": "#F3EEE7",
+                    "fontSize": 24,
+                    "fontWeight": "800"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "TitleBlock"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "justify": "center",
+              "style": {
+                "gap": "1px"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "value"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "numberFormat(if(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG1/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG2/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG3/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG4/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG1/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG2/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG3/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG1/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG2/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG1/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG2/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG3/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG4/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG5/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG1/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG2/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG3/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG4/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG5/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG6/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG1/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG2/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG3/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG4/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG5/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/DrumDB/Data/Safety/DDB_IG1/GroupTags/GroupEn\"), false), 1, 0), \"0\") + \" / 26\""
+                      },
+                      "type": "expr"
+                    },
+                    "persistent": true
+                  },
+                  "props.textStyle.color": {
+                    "binding": {
+                      "config": {
+                        "expression": "if((if(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG1/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG2/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG3/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG4/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG1/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG2/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG3/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG1/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG2/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG1/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG2/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG3/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG4/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG5/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG1/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG2/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG3/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG4/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG5/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG6/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG1/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG2/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG3/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG4/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG5/GroupTags/GroupEn\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/DrumDB/Data/Safety/DDB_IG1/GroupTags/GroupEn\"), false), 1, 0)) \u003d 26, \"#78A699\", \"#F3EEE7\")"
+                      },
+                      "type": "expr"
+                    },
+                    "persistent": true
+                  }
+                },
+                "props": {
+                  "text": "0 / 26",
+                  "textStyle": {
+                    "color": "#F3EEE7",
+                    "fontSize": 18,
+                    "fontWeight": "800"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "caption"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "ENERGIZED",
+                  "textStyle": {
+                    "color": "#C2C7C7",
+                    "fontSize": 8,
+                    "fontWeight": "600",
+                    "letterSpacing": "1px"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "kpiEnergized"
+            },
+            "position": {
+              "basis": "124px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.style.backgroundColor": {
+                "binding": {
+                  "config": {
+                    "expression": "\"rgba(36,46,48,0.78)\""
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "props.style.borderBottomColor": {
+                "binding": {
+                  "config": {
+                    "expression": "\"rgba(92,166,196,0.25)\""
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "props.style.borderLeftColor": {
+                "binding": {
+                  "config": {
+                    "expression": "\"rgba(92,166,196,0.25)\""
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "props.style.borderRightColor": {
+                "binding": {
+                  "config": {
+                    "expression": "\"rgba(92,166,196,0.25)\""
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "props.style.borderTopColor": {
+                "binding": {
+                  "config": {
+                    "expression": "\"rgba(92,166,196,0.25)\""
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              }
+            },
+            "props": {
+              "alignItems": "center",
+              "direction": "column",
+              "justify": "center",
+              "style": {
+                "backgroundColor": "rgba(36,46,48,0.78)",
+                "borderBottomColor": "rgba(92,166,196,0.25)",
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": 1,
+                "borderLeftColor": "rgba(92,166,196,0.25)",
+                "borderLeftStyle": "solid",
+                "borderLeftWidth": 1,
+                "borderRadius": "8px",
+                "borderRightColor": "rgba(92,166,196,0.25)",
+                "borderRightStyle": "solid",
+                "borderRightWidth": 1,
+                "borderTopColor": "rgba(92,166,196,0.25)",
+                "borderTopStyle": "solid",
+                "borderTopWidth": 1,
+                "gap": "1px",
+                "padding": "4px 10px 4px 10px"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "value"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "numberFormat(if(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG1/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG2/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG3/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG4/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG1/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG2/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG3/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG1/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG2/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG1/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG2/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG3/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG4/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG5/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG1/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG2/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG3/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG4/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG5/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG6/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG1/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG2/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG3/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG4/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG5/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/DrumDB/Data/Safety/DDB_IG1/GroupTags/GroupFaultActive\"), false), 1, 0), \"0\")"
+                      },
+                      "type": "expr"
+                    },
+                    "persistent": true
+                  },
+                  "props.textStyle.color": {
+                    "binding": {
+                      "config": {
+                        "expression": "if((if(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG1/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG2/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG3/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG4/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG1/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG2/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG3/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG1/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG2/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG1/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG2/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG3/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG4/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG5/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG1/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG2/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG3/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG4/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG5/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG6/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG1/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG2/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG3/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG4/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG5/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/DrumDB/Data/Safety/DDB_IG1/GroupTags/GroupFaultActive\"), false), 1, 0)) \u003e 0, \"#F3EEE7\", \"#80878A\")"
+                      },
+                      "type": "expr"
+                    },
+                    "persistent": true
+                  }
+                },
+                "props": {
+                  "text": "0",
+                  "textStyle": {
+                    "color": "#80878A",
+                    "fontSize": 18,
+                    "fontWeight": "800"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "caption"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "ACTIVE FAULTS",
+                  "textStyle": {
+                    "color": "#C2C7C7",
+                    "fontSize": 8,
+                    "fontWeight": "600",
+                    "letterSpacing": "1px"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "kpiFaults"
+            },
+            "position": {
+              "basis": "118px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.style.backgroundColor": {
+                "binding": {
+                  "config": {
+                    "expression": "if((if(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG1/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG2/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG3/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG4/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG1/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG2/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG3/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG1/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG2/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG1/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG2/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG3/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG4/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG5/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG1/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG2/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG3/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG4/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG5/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG6/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG1/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG2/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG3/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG4/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG5/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/DrumDB/Data/Safety/DDB_IG1/GroupTags/GroupFaultActive\"), false), 1, 0)) \u003e 0, \"rgba(192,32,38,0.30)\", \"rgba(36,46,48,0.78)\")"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "props.style.borderBottomColor": {
+                "binding": {
+                  "config": {
+                    "expression": "if((if(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG1/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG2/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG3/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG4/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG1/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG2/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG3/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG1/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG2/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG1/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG2/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG3/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG4/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG5/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG1/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG2/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG3/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG4/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG5/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG6/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG1/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG2/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG3/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG4/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG5/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/DrumDB/Data/Safety/DDB_IG1/GroupTags/GroupFaultActive\"), false), 1, 0)) \u003e 0, \"#C02026\", \"rgba(92,166,196,0.25)\")"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "props.style.borderLeftColor": {
+                "binding": {
+                  "config": {
+                    "expression": "if((if(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG1/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG2/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG3/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG4/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG1/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG2/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG3/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG1/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG2/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG1/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG2/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG3/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG4/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG5/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG1/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG2/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG3/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG4/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG5/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG6/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG1/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG2/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG3/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG4/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG5/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/DrumDB/Data/Safety/DDB_IG1/GroupTags/GroupFaultActive\"), false), 1, 0)) \u003e 0, \"#C02026\", \"rgba(92,166,196,0.25)\")"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "props.style.borderRightColor": {
+                "binding": {
+                  "config": {
+                    "expression": "if((if(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG1/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG2/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG3/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG4/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG1/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG2/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG3/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG1/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG2/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG1/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG2/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG3/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG4/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG5/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG1/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG2/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG3/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG4/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG5/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG6/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG1/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG2/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG3/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG4/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG5/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/DrumDB/Data/Safety/DDB_IG1/GroupTags/GroupFaultActive\"), false), 1, 0)) \u003e 0, \"#C02026\", \"rgba(92,166,196,0.25)\")"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "props.style.borderTopColor": {
+                "binding": {
+                  "config": {
+                    "expression": "if((if(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG1/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG2/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG3/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG4/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG1/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG2/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG3/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG1/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG2/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG1/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG2/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG3/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG4/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG5/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG1/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG2/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG3/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG4/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG5/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG6/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG1/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG2/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG3/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG4/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG5/GroupTags/GroupFaultActive\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/DrumDB/Data/Safety/DDB_IG1/GroupTags/GroupFaultActive\"), false), 1, 0)) \u003e 0, \"#C02026\", \"rgba(92,166,196,0.25)\")"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              }
+            },
+            "props": {
+              "alignItems": "center",
+              "direction": "column",
+              "justify": "center",
+              "style": {
+                "backgroundColor": "rgba(36,46,48,0.78)",
+                "borderBottomColor": "rgba(92,166,196,0.25)",
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": 1,
+                "borderLeftColor": "rgba(92,166,196,0.25)",
+                "borderLeftStyle": "solid",
+                "borderLeftWidth": 1,
+                "borderRadius": "8px",
+                "borderRightColor": "rgba(92,166,196,0.25)",
+                "borderRightStyle": "solid",
+                "borderRightWidth": 1,
+                "borderTopColor": "rgba(92,166,196,0.25)",
+                "borderTopStyle": "solid",
+                "borderTopWidth": 1,
+                "gap": "1px",
+                "padding": "4px 10px 4px 10px"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "value"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "numberFormat(if(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG1/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG2/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG3/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG4/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG1/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG2/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG3/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG1/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG2/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG1/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG2/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG3/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG4/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG5/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG1/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG2/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG3/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG4/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG5/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG6/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG1/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG2/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG3/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG4/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG5/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/DrumDB/Data/Safety/DDB_IG1/GroupTags/GroupIsolated\"), false), 1, 0), \"0\")"
+                      },
+                      "type": "expr"
+                    },
+                    "persistent": true
+                  },
+                  "props.textStyle.color": {
+                    "binding": {
+                      "config": {
+                        "expression": "if((if(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG1/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG2/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG3/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG4/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG1/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG2/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG3/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG1/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG2/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG1/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG2/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG3/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG4/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG5/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG1/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG2/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG3/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG4/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG5/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG6/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG1/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG2/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG3/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG4/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG5/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/DrumDB/Data/Safety/DDB_IG1/GroupTags/GroupIsolated\"), false), 1, 0)) \u003e 0, \"#EBC452\", \"#80878A\")"
+                      },
+                      "type": "expr"
+                    },
+                    "persistent": true
+                  }
+                },
+                "props": {
+                  "text": "26",
+                  "textStyle": {
+                    "color": "#EBC452",
+                    "fontSize": 18,
+                    "fontWeight": "800"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "caption"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "ISOLATED",
+                  "textStyle": {
+                    "color": "#C2C7C7",
+                    "fontSize": 8,
+                    "fontWeight": "600",
+                    "letterSpacing": "1px"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "kpiIsolated"
+            },
+            "position": {
+              "basis": "118px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.style.backgroundColor": {
+                "binding": {
+                  "config": {
+                    "expression": "if((if(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG1/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG2/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG3/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG4/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG1/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG2/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG3/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG1/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG2/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG1/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG2/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG3/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG4/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG5/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG1/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG2/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG3/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG4/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG5/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG6/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG1/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG2/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG3/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG4/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG5/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/DrumDB/Data/Safety/DDB_IG1/GroupTags/GroupIsolated\"), false), 1, 0)) \u003e 0, \"rgba(235,196,82,0.14)\", \"rgba(36,46,48,0.78)\")"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "props.style.borderBottomColor": {
+                "binding": {
+                  "config": {
+                    "expression": "if((if(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG1/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG2/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG3/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG4/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG1/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG2/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG3/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG1/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG2/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG1/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG2/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG3/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG4/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG5/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG1/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG2/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG3/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG4/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG5/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG6/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG1/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG2/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG3/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG4/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG5/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/DrumDB/Data/Safety/DDB_IG1/GroupTags/GroupIsolated\"), false), 1, 0)) \u003e 0, \"#EBC452\", \"rgba(92,166,196,0.25)\")"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "props.style.borderLeftColor": {
+                "binding": {
+                  "config": {
+                    "expression": "if((if(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG1/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG2/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG3/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG4/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG1/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG2/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG3/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG1/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG2/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG1/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG2/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG3/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG4/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG5/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG1/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG2/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG3/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG4/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG5/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG6/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG1/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG2/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG3/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG4/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG5/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/DrumDB/Data/Safety/DDB_IG1/GroupTags/GroupIsolated\"), false), 1, 0)) \u003e 0, \"#EBC452\", \"rgba(92,166,196,0.25)\")"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "props.style.borderRightColor": {
+                "binding": {
+                  "config": {
+                    "expression": "if((if(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG1/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG2/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG3/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG4/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG1/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG2/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG3/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG1/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG2/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG1/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG2/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG3/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG4/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG5/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG1/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG2/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG3/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG4/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG5/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG6/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG1/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG2/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG3/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG4/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG5/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/DrumDB/Data/Safety/DDB_IG1/GroupTags/GroupIsolated\"), false), 1, 0)) \u003e 0, \"#EBC452\", \"rgba(92,166,196,0.25)\")"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "props.style.borderTopColor": {
+                "binding": {
+                  "config": {
+                    "expression": "if((if(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG1/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG2/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG3/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG4/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG1/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG2/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG3/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG1/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG2/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG1/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG2/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG3/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG4/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG5/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG1/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG2/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG3/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG4/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG5/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG6/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG1/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG2/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG3/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG4/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG5/GroupTags/GroupIsolated\"), false), 1, 0) +\r\nif(coalesce(tag(\"[TL-KPPWS01-01]KPP/DrumDB/Data/Safety/DDB_IG1/GroupTags/GroupIsolated\"), false), 1, 0)) \u003e 0, \"#EBC452\", \"rgba(92,166,196,0.25)\")"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              }
+            },
+            "props": {
+              "alignItems": "center",
+              "direction": "column",
+              "justify": "center",
+              "style": {
+                "backgroundColor": "rgba(235,196,82,0.14)",
+                "borderBottomColor": "#EBC452",
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": 1,
+                "borderLeftColor": "#EBC452",
+                "borderLeftStyle": "solid",
+                "borderLeftWidth": 1,
+                "borderRadius": "8px",
+                "borderRightColor": "#EBC452",
+                "borderRightStyle": "solid",
+                "borderRightWidth": 1,
+                "borderTopColor": "#EBC452",
+                "borderTopStyle": "solid",
+                "borderTopWidth": 1,
+                "gap": "1px",
+                "padding": "4px 10px 4px 10px"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "value"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "if(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG1/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG2/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG3/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG4/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG1/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG2/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG3/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG1/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG2/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG1/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG2/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG3/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG4/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG5/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG1/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG2/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG3/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG4/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG5/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG6/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG1/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG2/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG3/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG4/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG5/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/DrumDB/Data/Safety/DDB_IG1/GroupTags/AllEstopsOk\"), false),\r\n\"ALL OK\", \"CHECK\")"
+                      },
+                      "type": "expr"
+                    },
+                    "persistent": true
+                  },
+                  "props.textStyle.color": {
+                    "binding": {
+                      "config": {
+                        "expression": "if(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG1/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG2/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG3/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG4/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG1/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG2/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG3/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG1/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG2/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG1/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG2/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG3/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG4/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG5/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG1/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG2/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG3/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG4/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG5/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG6/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG1/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG2/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG3/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG4/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG5/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/DrumDB/Data/Safety/DDB_IG1/GroupTags/AllEstopsOk\"), false),\r\n\"#78A699\", \"#F3EEE7\")"
+                      },
+                      "type": "expr"
+                    },
+                    "persistent": true
+                  }
+                },
+                "props": {
+                  "text": "CHECK",
+                  "textStyle": {
+                    "color": "#F3EEE7",
+                    "fontSize": 18,
+                    "fontWeight": "800"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "caption"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "E-STOPS",
+                  "textStyle": {
+                    "color": "#C2C7C7",
+                    "fontSize": 8,
+                    "fontWeight": "600",
+                    "letterSpacing": "1px"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "kpiEstops"
+            },
+            "position": {
+              "basis": "106px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.style.backgroundColor": {
+                "binding": {
+                  "config": {
+                    "expression": "if(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG1/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG2/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG3/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG4/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG1/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG2/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG3/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG1/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG2/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG1/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG2/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG3/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG4/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG5/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG1/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG2/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG3/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG4/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG5/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG6/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG1/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG2/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG3/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG4/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG5/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/DrumDB/Data/Safety/DDB_IG1/GroupTags/AllEstopsOk\"), false),\r\n\"rgba(36,46,48,0.78)\", \"rgba(192,32,38,0.30)\")"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "props.style.borderBottomColor": {
+                "binding": {
+                  "config": {
+                    "expression": "if(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG1/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG2/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG3/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG4/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG1/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG2/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG3/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG1/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG2/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG1/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG2/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG3/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG4/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG5/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG1/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG2/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG3/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG4/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG5/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG6/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG1/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG2/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG3/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG4/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG5/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/DrumDB/Data/Safety/DDB_IG1/GroupTags/AllEstopsOk\"), false),\r\n\"rgba(92,166,196,0.25)\", \"#C02026\")"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "props.style.borderLeftColor": {
+                "binding": {
+                  "config": {
+                    "expression": "if(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG1/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG2/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG3/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG4/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG1/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG2/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG3/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG1/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG2/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG1/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG2/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG3/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG4/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG5/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG1/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG2/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG3/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG4/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG5/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG6/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG1/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG2/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG3/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG4/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG5/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/DrumDB/Data/Safety/DDB_IG1/GroupTags/AllEstopsOk\"), false),\r\n\"rgba(92,166,196,0.25)\", \"#C02026\")"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "props.style.borderRightColor": {
+                "binding": {
+                  "config": {
+                    "expression": "if(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG1/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG2/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG3/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG4/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG1/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG2/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG3/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG1/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG2/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG1/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG2/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG3/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG4/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG5/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG1/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG2/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG3/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG4/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG5/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG6/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG1/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG2/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG3/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG4/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG5/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/DrumDB/Data/Safety/DDB_IG1/GroupTags/AllEstopsOk\"), false),\r\n\"rgba(92,166,196,0.25)\", \"#C02026\")"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "props.style.borderTopColor": {
+                "binding": {
+                  "config": {
+                    "expression": "if(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG1/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG2/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG3/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG4/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG1/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG2/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG3/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG1/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG2/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG1/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG2/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG3/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG4/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG5/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG1/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG2/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG3/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG4/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG5/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG6/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG1/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG2/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG3/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG4/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG5/GroupTags/AllEstopsOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/DrumDB/Data/Safety/DDB_IG1/GroupTags/AllEstopsOk\"), false),\r\n\"rgba(92,166,196,0.25)\", \"#C02026\")"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              }
+            },
+            "props": {
+              "alignItems": "center",
+              "direction": "column",
+              "justify": "center",
+              "style": {
+                "backgroundColor": "rgba(192,32,38,0.30)",
+                "borderBottomColor": "#C02026",
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": 1,
+                "borderLeftColor": "#C02026",
+                "borderLeftStyle": "solid",
+                "borderLeftWidth": 1,
+                "borderRadius": "8px",
+                "borderRightColor": "#C02026",
+                "borderRightStyle": "solid",
+                "borderRightWidth": 1,
+                "borderTopColor": "#C02026",
+                "borderTopStyle": "solid",
+                "borderTopWidth": 1,
+                "gap": "1px",
+                "padding": "4px 10px 4px 10px"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "value"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "if(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG1/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG2/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG3/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG4/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG1/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG2/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG3/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG1/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG2/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG1/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG2/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG3/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG4/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG5/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG1/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG2/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG3/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG4/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG5/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG6/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG1/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG2/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG3/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG4/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG5/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/DrumDB/Data/Safety/DDB_IG1/GroupTags/AllGatesOk\"), false),\r\n\"ALL OK\", \"CHECK\")"
+                      },
+                      "type": "expr"
+                    },
+                    "persistent": true
+                  },
+                  "props.textStyle.color": {
+                    "binding": {
+                      "config": {
+                        "expression": "if(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG1/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG2/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG3/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG4/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG1/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG2/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG3/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG1/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG2/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG1/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG2/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG3/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG4/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG5/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG1/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG2/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG3/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG4/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG5/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG6/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG1/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG2/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG3/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG4/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG5/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/DrumDB/Data/Safety/DDB_IG1/GroupTags/AllGatesOk\"), false),\r\n\"#78A699\", \"#F3EEE7\")"
+                      },
+                      "type": "expr"
+                    },
+                    "persistent": true
+                  }
+                },
+                "props": {
+                  "text": "CHECK",
+                  "textStyle": {
+                    "color": "#F3EEE7",
+                    "fontSize": 18,
+                    "fontWeight": "800"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "caption"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "GATES",
+                  "textStyle": {
+                    "color": "#C2C7C7",
+                    "fontSize": 8,
+                    "fontWeight": "600",
+                    "letterSpacing": "1px"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "kpiGates"
+            },
+            "position": {
+              "basis": "106px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.style.backgroundColor": {
+                "binding": {
+                  "config": {
+                    "expression": "if(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG1/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG2/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG3/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG4/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG1/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG2/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG3/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG1/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG2/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG1/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG2/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG3/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG4/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG5/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG1/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG2/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG3/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG4/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG5/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG6/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG1/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG2/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG3/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG4/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG5/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/DrumDB/Data/Safety/DDB_IG1/GroupTags/AllGatesOk\"), false),\r\n\"rgba(36,46,48,0.78)\", \"rgba(192,32,38,0.30)\")"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "props.style.borderBottomColor": {
+                "binding": {
+                  "config": {
+                    "expression": "if(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG1/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG2/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG3/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG4/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG1/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG2/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG3/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG1/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG2/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG1/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG2/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG3/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG4/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG5/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG1/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG2/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG3/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG4/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG5/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG6/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG1/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG2/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG3/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG4/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG5/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/DrumDB/Data/Safety/DDB_IG1/GroupTags/AllGatesOk\"), false),\r\n\"rgba(92,166,196,0.25)\", \"#C02026\")"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "props.style.borderLeftColor": {
+                "binding": {
+                  "config": {
+                    "expression": "if(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG1/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG2/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG3/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG4/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG1/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG2/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG3/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG1/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG2/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG1/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG2/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG3/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG4/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG5/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG1/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG2/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG3/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG4/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG5/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG6/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG1/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG2/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG3/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG4/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG5/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/DrumDB/Data/Safety/DDB_IG1/GroupTags/AllGatesOk\"), false),\r\n\"rgba(92,166,196,0.25)\", \"#C02026\")"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "props.style.borderRightColor": {
+                "binding": {
+                  "config": {
+                    "expression": "if(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG1/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG2/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG3/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG4/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG1/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG2/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG3/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG1/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG2/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG1/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG2/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG3/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG4/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG5/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG1/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG2/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG3/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG4/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG5/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG6/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG1/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG2/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG3/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG4/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG5/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/DrumDB/Data/Safety/DDB_IG1/GroupTags/AllGatesOk\"), false),\r\n\"rgba(92,166,196,0.25)\", \"#C02026\")"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "props.style.borderTopColor": {
+                "binding": {
+                  "config": {
+                    "expression": "if(coalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG1/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG2/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG3/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_IG4/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG1/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG2/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Grader/Data/Safety/GRA_IG3/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG1/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/COS_IG2/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG1/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG2/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG3/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG4/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/TnB/Data/Safety/TNB_IG5/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG1/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG2/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG3/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG4/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG5/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/CHP_IG6/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG1/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG2/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG3/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG4/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Data/Safety/HOG_IG5/GroupTags/AllGatesOk\"), false) \u0026\u0026\r\ncoalesce(tag(\"[TL-KPPWS01-01]KPP/DrumDB/Data/Safety/DDB_IG1/GroupTags/AllGatesOk\"), false),\r\n\"rgba(92,166,196,0.25)\", \"#C02026\")"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              }
+            },
+            "props": {
+              "alignItems": "center",
+              "direction": "column",
+              "justify": "center",
+              "style": {
+                "backgroundColor": "rgba(192,32,38,0.30)",
+                "borderBottomColor": "#C02026",
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": 1,
+                "borderLeftColor": "#C02026",
+                "borderLeftStyle": "solid",
+                "borderLeftWidth": 1,
+                "borderRadius": "8px",
+                "borderRightColor": "#C02026",
+                "borderRightStyle": "solid",
+                "borderRightWidth": 1,
+                "borderTopColor": "#C02026",
+                "borderTopStyle": "solid",
+                "borderTopWidth": 1,
+                "gap": "1px",
+                "padding": "4px 10px 4px 10px"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "value"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "ENGINEERING",
+                  "textStyle": {
+                    "color": "#DEBF7A",
+                    "fontSize": 15,
+                    "fontWeight": "800"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "caption"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "MENU",
+                  "textStyle": {
+                    "color": "#C2C7C7",
+                    "fontSize": 8,
+                    "fontWeight": "600",
+                    "letterSpacing": "1px"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "script": "\t# click flash\n\tself.props.style.backgroundColor \u003d \u0027rgba(222,191,122,0.32)\u0027\n\tself.props.style.borderTopColor \u003d \u0027#EBC452\u0027\n\tself.props.style.borderBottomColor \u003d \u0027#EBC452\u0027\n\tself.props.style.borderLeftColor \u003d \u0027#EBC452\u0027\n\tself.props.style.borderRightColor \u003d \u0027#EBC452\u0027\n\n\tsystem.perspective.openPopup(\u0027EngineeringMenu\u0027,\n\t\t\u0027Application/Safety/EngineeringMenu\u0027,\n\t\tparams\u003d{},\n\t\ttitle\u003d\u0027\u0027,\n\t\tposition\u003d{\u0027top\u0027: 92, \u0027right\u0027: 24, \u0027width\u0027: 170, \u0027height\u0027: 320},\n\t\tshowCloseIcon\u003dFalse,\n\t\tdraggable\u003dFalse,\n\t\tresizable\u003dFalse,\n\t\tmodal\u003dTrue,\n\t\toverlayDismiss\u003dTrue)\n\n\timport time\n\ttime.sleep(0.1)\n\tself.props.style.backgroundColor \u003d \u0027rgba(222,191,122,0.16)\u0027\n\tself.props.style.borderTopColor \u003d \u0027#DEBF7A\u0027\n\tself.props.style.borderBottomColor \u003d \u0027#DEBF7A\u0027\n\tself.props.style.borderLeftColor \u003d \u0027#DEBF7A\u0027\n\tself.props.style.borderRightColor \u003d \u0027#DEBF7A\u0027\n"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "btnEngineering"
+            },
+            "position": {
+              "basis": "138px",
+              "shrink": 0
+            },
+            "props": {
+              "alignItems": "center",
+              "direction": "column",
+              "justify": "center",
+              "style": {
+                "backgroundColor": "rgba(222,191,122,0.16)",
+                "borderBottomColor": "#DEBF7A",
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": 1,
+                "borderLeftColor": "#DEBF7A",
+                "borderLeftStyle": "solid",
+                "borderLeftWidth": 1,
+                "borderRadius": "8px",
+                "borderRightColor": "#DEBF7A",
+                "borderRightStyle": "solid",
+                "borderRightWidth": 1,
+                "borderTopColor": "#DEBF7A",
+                "borderTopStyle": "solid",
+                "borderTopWidth": 1,
+                "classes": "stem-eng-chip",
+                "cursor": "pointer",
+                "gap": "1px",
+                "marginRight": "10px",
+                "padding": "4px 10px 4px 10px"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "halo"
+                    },
+                    "position": {
+                      "height": 22,
+                      "width": 26,
+                      "x": 35,
+                      "y": 6
+                    },
+                    "props": {
+                      "style": {
+                        "backgroundColor": "#2C7A66",
+                        "borderRadius": "50%",
+                        "classes": "se-halo",
+                        "filter": "blur(5px)",
+                        "opacity": 0.16
+                      }
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "name": "track"
+                    },
+                    "position": {
+                      "height": 1.6,
+                      "width": 86,
+                      "x": 5,
+                      "y": 17
+                    },
+                    "props": {
+                      "style": {
+                        "backgroundColor": "#2E7A98",
+                        "borderRadius": "2px",
+                        "opacity": 0.28
+                      }
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "name": "flowdot"
+                    },
+                    "position": {
+                      "height": 7,
+                      "width": 7,
+                      "x": 5,
+                      "y": 14
+                    },
+                    "props": {
+                      "style": {
+                        "backgroundColor": "#B8901F",
+                        "borderRadius": "50%",
+                        "classes": "se-flow"
+                      }
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "name": "gearMain"
+                    },
+                    "position": {
+                      "height": 22,
+                      "width": 22,
+                      "x": 37,
+                      "y": 7
+                    },
+                    "props": {
+                      "color": "#2C7A66",
+                      "path": "material/settings",
+                      "style": {
+                        "classes": "se-gear-main",
+                        "fontSize": 22
+                      }
+                    },
+                    "type": "ia.display.icon"
+                  },
+                  {
+                    "meta": {
+                      "name": "gearAux"
+                    },
+                    "position": {
+                      "height": 13,
+                      "width": 13,
+                      "x": 58,
+                      "y": 3
+                    },
+                    "props": {
+                      "color": "#2E7A98",
+                      "path": "material/settings",
+                      "style": {
+                        "classes": "se-gear-aux",
+                        "fontSize": 13
+                      }
+                    },
+                    "type": "ia.display.icon"
+                  },
+                  {
+                    "meta": {
+                      "name": "t1"
+                    },
+                    "position": {
+                      "height": 3,
+                      "width": 6,
+                      "x": 10,
+                      "y": 5
+                    },
+                    "props": {
+                      "style": {
+                        "backgroundColor": "#B8901F",
+                        "borderRadius": "50%",
+                        "classes": "se-t1"
+                      }
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "name": "t2"
+                    },
+                    "position": {
+                      "height": 3,
+                      "width": 6,
+                      "x": 22,
+                      "y": 5
+                    },
+                    "props": {
+                      "style": {
+                        "backgroundColor": "#2E7A98",
+                        "borderRadius": "50%",
+                        "classes": "se-t2"
+                      }
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "name": "t3"
+                    },
+                    "position": {
+                      "height": 3,
+                      "width": 6,
+                      "x": 34,
+                      "y": 5
+                    },
+                    "props": {
+                      "style": {
+                        "backgroundColor": "#2C7A66",
+                        "borderRadius": "50%",
+                        "classes": "se-t3"
+                      }
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": {
+                  "name": "miniEngine"
+                },
+                "position": {
+                  "basis": "34px",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "backgroundColor": "transparent",
+                    "overflow": "hidden"
+                  },
+                  "viewport": {
+                    "height": 34,
+                    "width": 120
+                  }
+                },
+                "type": "ia.container.coord"
+              },
+              {
+                "meta": {
+                  "name": "caption"
+                },
+                "props": {
+                  "text": "STEM ENGINE",
+                  "textStyle": {
+                    "color": "#C2C7C7",
+                    "fontSize": 8,
+                    "fontWeight": "600",
+                    "letterSpacing": "1px"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "card_engine"
+            },
+            "position": {
+              "basis": "175px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.style.classes": {
+                "binding": {
+                  "config": {
+                    "expression": "if(coalesce({view.custom.eng.running},0)\u003d1,\"stem-eng-chip\",\"stem-eng-chip se-stopped\")"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "alignItems": "center",
+              "direction": "column",
+              "justify": "center",
+              "style": {
+                "backgroundColor": "rgba(36,46,48,0.78)",
+                "borderBottomColor": "rgba(92,166,196,0.25)",
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": 1,
+                "borderLeftColor": "rgba(92,166,196,0.25)",
+                "borderLeftStyle": "solid",
+                "borderLeftWidth": 1,
+                "borderRadius": "8px",
+                "borderRightColor": "rgba(92,166,196,0.25)",
+                "borderRightStyle": "solid",
+                "borderRightWidth": 1,
+                "borderTopColor": "#DEBF7A",
+                "borderTopStyle": "solid",
+                "borderTopWidth": 2,
+                "gap": "2px",
+                "padding": "2px 14px"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "HeaderBar"
+        },
+        "position": {
+          "basis": "72px",
+          "shrink": 0
+        },
+        "props": {
+          "alignItems": "center",
+          "style": {
+            "borderBottomColor": "rgba(222,191,122,0.35)",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": 1,
+            "gap": "10px",
+            "padding": "10px 16px 6px 16px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Card_SDB"
+            },
+            "position": {
+              "basis": "260px",
+              "grow": 1
+            },
+            "props": {
+              "params": {
+                "Area": "SDB"
+              },
+              "path": "Application/Safety/Components/AreaSafetyCard"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "Card_GRA"
+            },
+            "position": {
+              "basis": "260px",
+              "grow": 1
+            },
+            "props": {
+              "params": {
+                "Area": "GRA"
+              },
+              "path": "Application/Safety/Components/AreaSafetyCard"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "Card_COS"
+            },
+            "position": {
+              "basis": "260px",
+              "grow": 1
+            },
+            "props": {
+              "params": {
+                "Area": "COS"
+              },
+              "path": "Application/Safety/Components/AreaSafetyCard"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "Card_TNB"
+            },
+            "position": {
+              "basis": "260px",
+              "grow": 1
+            },
+            "props": {
+              "params": {
+                "Area": "TNB"
+              },
+              "path": "Application/Safety/Components/AreaSafetyCard"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "Card_CHP"
+            },
+            "position": {
+              "basis": "260px",
+              "grow": 1
+            },
+            "props": {
+              "params": {
+                "Area": "CHP"
+              },
+              "path": "Application/Safety/Components/AreaSafetyCard"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "Card_HOG"
+            },
+            "position": {
+              "basis": "260px",
+              "grow": 1
+            },
+            "props": {
+              "params": {
+                "Area": "HOG"
+              },
+              "path": "Application/Safety/Components/AreaSafetyCard"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "Card_DDB"
+            },
+            "position": {
+              "basis": "200px",
+              "shrink": 0
+            },
+            "props": {
+              "params": {
+                "Area": "DDB"
+              },
+              "path": "Application/Safety/Components/AreaSafetyCard"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "icon"
+                },
+                "position": {
+                  "basis": "34px",
+                  "shrink": 0
+                },
+                "props": {
+                  "color": "#DEBF7A",
+                  "path": "material/verified_user",
+                  "style": {
+                    "height": "34px",
+                    "width": "34px"
+                  }
+                },
+                "type": "ia.display.icon"
+              },
+              {
+                "meta": {
+                  "name": "value"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "SAFETY",
+                  "textStyle": {
+                    "color": "#DEBF7A",
+                    "fontSize": 15,
+                    "fontWeight": "800"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "caption"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "DIAGNOSTICS",
+                  "textStyle": {
+                    "color": "#C2C7C7",
+                    "fontSize": 8,
+                    "fontWeight": "600",
+                    "letterSpacing": "1px"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "hint"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "marginTop": "6px",
+                    "textAlign": "center",
+                    "whiteSpace": "normal"
+                  },
+                  "text": "groups, devices, log, one-press reset",
+                  "textStyle": {
+                    "color": "#80878A",
+                    "fontSize": 10,
+                    "textAlign": "center"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "script": "\t# 1.25.0: the Safety Diagnostics popup - on the area that needs attention most (a fault, then needs reset or\n\t# stopped, then isolated), else SDB. The popup\u0027s tabs reach every area.\n\tarea \u003d \u0027SDB\u0027\n\ttry:\n\t\trank \u003d {\u0027flt\u0027: 4, \u0027rst\u0027: 3, \u0027stp\u0027: 3, \u0027act\u0027: 2}\n\t\tbest, top \u003d \u0027SDB\u0027, 0\n\t\tfor t in booth.safety.model(\u0027SDB\u0027).get(\u0027tabs\u0027, []):\n\t\t\tr \u003d rank.get(t.get(\u0027tone\u0027), 0)\n\t\t\tif r \u003e top:\n\t\t\t\tbest, top \u003d t.get(\u0027code\u0027, \u0027SDB\u0027), r\n\t\tarea \u003d best\n\texcept:\n\t\tpass\n\tbooth.safety.openDiag(area)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "SafetyDiagButton",
+              "tooltip": {
+                "enabled": true,
+                "text": "Safety Diagnostics - every area: isolation groups, devices, isolation log and RESET ALL IGs"
+              }
+            },
+            "position": {
+              "basis": "118px",
+              "shrink": 0
+            },
+            "props": {
+              "alignItems": "center",
+              "direction": "column",
+              "justify": "center",
+              "style": {
+                "backgroundColor": "rgba(222,191,122,0.12)",
+                "borderBottomColor": "#DEBF7A",
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": 1,
+                "borderLeftColor": "#DEBF7A",
+                "borderLeftStyle": "solid",
+                "borderLeftWidth": 1,
+                "borderRadius": "10px",
+                "borderRightColor": "#DEBF7A",
+                "borderRightStyle": "solid",
+                "borderRightWidth": 1,
+                "borderTopColor": "#DEBF7A",
+                "borderTopStyle": "solid",
+                "borderTopWidth": 1,
+                "classes": "stem-eng-chip",
+                "cursor": "pointer",
+                "gap": "2px",
+                "overflow": "hidden",
+                "padding": "10px 8px 10px 8px"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "CardsRow"
+        },
+        "position": {
+          "basis": "216px",
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "gap": "10px",
+            "padding": "10px 16px 4px 16px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "ForensicsBadge"
+            },
+            "position": {
+              "basis": "44px",
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "textAlign": "center"
+              },
+              "text": "🛡",
+              "textStyle": {
+                "color": "#DEBF7A",
+                "fontSize": 22
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "ForensicsTitle"
+                },
+                "props": {
+                  "text": "ISOLATION FORENSICS",
+                  "textStyle": {
+                    "color": "#DEBF7A",
+                    "fontSize": 12,
+                    "fontWeight": "700",
+                    "letterSpacing": "1.5px"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "ForensicsDesc"
+                },
+                "props": {
+                  "text": "Isolation \u0026 fault event history - fault codes, gate faults, contact health, and a live event timeline.",
+                  "textStyle": {
+                    "color": "#80878A",
+                    "fontSize": 11,
+                    "fontWeight": "400"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "ForensicsText"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "gap": "2px",
+              "justify": "center",
+              "style": {
+                "padding": "0px 4px"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "icon"
+                },
+                "position": {
+                  "basis": "18px",
+                  "shrink": 0
+                },
+                "props": {
+                  "color": "#5CA6C4",
+                  "path": "material/open_in_new",
+                  "style": {
+                    "fontSize": 15
+                  }
+                },
+                "type": "ia.display.icon"
+              },
+              {
+                "meta": {
+                  "name": "lbl"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "Open Forensics",
+                  "textStyle": {
+                    "color": "#5CA6C4",
+                    "fontSize": 11,
+                    "fontWeight": "600"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "script": "\tsystem.perspective.openPopup(\u0027SafetyForensics\u0027,\n\t\t\u0027Framework/Popups/SafetyForensicsPopup\u0027,\n\t\tparams\u003d{},\n\t\ttitle\u003d\u0027\u0027,\n\t\tposition\u003d{\u0027width\u0027: 1180, \u0027height\u0027: 760},\n\t\tshowCloseIcon\u003dFalse,\n\t\tdraggable\u003dFalse,\n\t\tresizable\u003dFalse,\n\t\tmodal\u003dTrue,\n\t\toverlayDismiss\u003dFalse)\n"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "ForensicsOpenBtn"
+            },
+            "position": {
+              "basis": "170px",
+              "shrink": 0
+            },
+            "props": {
+              "alignItems": "center",
+              "justify": "center",
+              "style": {
+                "borderRadius": "6px",
+                "classes": "gbtn gbtn-water",
+                "cursor": "pointer",
+                "gap": "7px",
+                "height": "34px",
+                "padding": "0px 18px"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "ForensicsPanel"
+        },
+        "position": {
+          "basis": "64px",
+          "shrink": 0
+        },
+        "props": {
+          "alignItems": "center",
+          "gap": "12px",
+          "style": {
+            "backgroundColor": "rgba(36,46,48,0.55)",
+            "borderBottomColor": "rgba(92,166,196,0.18)",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": 1,
+            "borderLeftColor": "rgba(92,166,196,0.18)",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": 1,
+            "borderRadius": "10px",
+            "borderRightColor": "rgba(92,166,196,0.18)",
+            "borderRightStyle": "solid",
+            "borderRightWidth": 1,
+            "borderTopColor": "#DEBF7A",
+            "borderTopStyle": "solid",
+            "borderTopWidth": 3,
+            "margin": "4px 16px 4px 16px",
+            "overflow": "hidden",
+            "padding": "0px 16px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "AWTitle"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "ANOMALY WATCH",
+                  "textStyle": {
+                    "color": "#DEBF7A",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "1.5px"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "AWLive"
+                },
+                "position": {
+                  "basis": "8px",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "animation": "sePulse 1.6s ease-in-out infinite",
+                    "backgroundColor": "#7CB342",
+                    "borderRadius": "50%",
+                    "height": "8px",
+                    "width": "8px"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "AWHint"
+                },
+                "position": {
+                  "basis": "0px",
+                  "grow": 1
+                },
+                "props": {
+                  "style": {
+                    "overflow": "hidden",
+                    "whiteSpace": "nowrap"
+                  },
+                  "text": "Every area, every 5 s - index 0-100 is the distance to the nearest limit - SHIFT bar: this shift so far, one step per 5 min, over the last shift - click a card for the detail",
+                  "textStyle": {
+                    "color": "#80878A",
+                    "fontSize": 9
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "AWStats"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "fallbackDelay": 2.5,
+                        "mode": "direct",
+                        "tagPath": "[TL-KPPWS01-01]KPP/Anomaly/Summary"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\t# KPP/Anomaly/Summary -\u003e the header line: pass, assets, last update.\n\ttry:\n\t\td \u003d system.util.jsonDecode(value)\n\t\treturn \u0027PASS %s  |  %s ASSETS  |  %s\u0027 % (str(d.get(\u0027pass\u0027, \u0027-\u0027)), str(d.get(\u0027assets\u0027, \u0027-\u0027)), str(d.get(\u0027upd\u0027, \u0027--:--:--\u0027)))\n\texcept:\n\t\treturn \u0027WAITING FOR THE ANOMALY ENGINE\u0027",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "tag"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "color": "#5CA6C4",
+                    "fontFamily": "Consolas, \u0027Courier New\u0027, monospace",
+                    "fontSize": "10px",
+                    "letterSpacing": "1px",
+                    "whiteSpace": "nowrap"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "events": {
+                  "dom": {
+                    "onClick": {
+                      "config": {
+                        "script": "\tsystem.perspective.openPopup(\u0027anomalyMethod\u0027, \u0027Application/Safety/Components/AnomalyWatchMethod\u0027, {}, title \u003d \u0027Anomaly Watch - how the index works\u0027, position \u003d {\u0027width\u0027: 560, \u0027height\u0027: 639}, showCloseIcon \u003d True, draggable \u003d True, resizable \u003d False, modal \u003d False)\n"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "AWHelp"
+                },
+                "position": {
+                  "basis": "18px",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "border": "1px solid #DEBF7A",
+                    "borderRadius": "9px",
+                    "color": "#DEBF7A",
+                    "cursor": "pointer",
+                    "fontSize": "11px",
+                    "fontWeight": 700,
+                    "height": "18px",
+                    "lineHeight": "16px",
+                    "textAlign": "center",
+                    "width": "18px"
+                  },
+                  "text": "?"
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "AnomalyHeader"
+            },
+            "position": {
+              "basis": "34px",
+              "shrink": 0
+            },
+            "props": {
+              "alignItems": "center",
+              "style": {
+                "backgroundColor": "rgba(36,46,48,0.85)",
+                "gap": "8px",
+                "padding": "0px 14px"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "AW_DEBARKER"
+                },
+                "position": {
+                  "basis": "0px",
+                  "grow": 1
+                },
+                "props": {
+                  "params": {
+                    "Area": "DEBARKER",
+                    "Route": "/Debarker/Overview"
+                  },
+                  "path": "Application/Safety/Components/AnomalyAreaCard",
+                  "style": {
+                    "height": "276px"
+                  }
+                },
+                "type": "ia.display.view"
+              },
+              {
+                "meta": {
+                  "name": "AW_GRADING"
+                },
+                "position": {
+                  "basis": "0px",
+                  "grow": 1
+                },
+                "props": {
+                  "params": {
+                    "Area": "GRADING",
+                    "Route": "/Grading/Overview"
+                  },
+                  "path": "Application/Safety/Components/AnomalyAreaCard",
+                  "style": {
+                    "height": "276px"
+                  }
+                },
+                "type": "ia.display.view"
+              },
+              {
+                "meta": {
+                  "name": "AW_COS"
+                },
+                "position": {
+                  "basis": "0px",
+                  "grow": 1
+                },
+                "props": {
+                  "params": {
+                    "Area": "COS",
+                    "Route": "/COS/Overview"
+                  },
+                  "path": "Application/Safety/Components/AnomalyAreaCard",
+                  "style": {
+                    "height": "276px"
+                  }
+                },
+                "type": "ia.display.view"
+              }
+            ],
+            "meta": {
+              "name": "AnomalyRowAreas"
+            },
+            "position": {
+              "basis": "0px",
+              "grow": 1
+            },
+            "props": {
+              "alignItems": "start",
+              "style": {
+                "gap": "12px",
+                "overflow": "hidden",
+                "padding": "12px"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "AW_SORTLINE"
+                },
+                "position": {
+                  "basis": "0px",
+                  "grow": 1
+                },
+                "props": {
+                  "params": {
+                    "Area": "SORTLINE",
+                    "Route": "/Sortline/Overview"
+                  },
+                  "path": "Application/Safety/Components/AnomalyAreaCard",
+                  "style": {
+                    "height": "276px"
+                  }
+                },
+                "type": "ia.display.view"
+              },
+              {
+                "meta": {
+                  "name": "AW_CHP"
+                },
+                "position": {
+                  "basis": "0px",
+                  "grow": 1
+                },
+                "props": {
+                  "params": {
+                    "Area": "CHP",
+                    "Popup": "Application/Safety/Components/AnomalyChippersPopup",
+                    "PopupH": 640,
+                    "PopupTitle": "Chippers - knives and motors",
+                    "PopupW": 1500,
+                    "Route": ""
+                  },
+                  "path": "Application/Safety/Components/AnomalyAreaCard",
+                  "style": {
+                    "height": "276px"
+                  }
+                },
+                "type": "ia.display.view"
+              },
+              {
+                "meta": {
+                  "name": "AW_EVENTS"
+                },
+                "position": {
+                  "basis": "0px",
+                  "grow": 1
+                },
+                "props": {
+                  "path": "Application/Safety/Components/AnomalyEventFeed",
+                  "style": {
+                    "height": "276px"
+                  }
+                },
+                "type": "ia.display.view"
+              }
+            ],
+            "meta": {
+              "name": "AnomalyRow"
+            },
+            "position": {
+              "basis": "0px",
+              "grow": 1
+            },
+            "props": {
+              "alignItems": "start",
+              "style": {
+                "gap": "12px",
+                "overflow": "hidden",
+                "padding": "12px"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "AnomalyPanel"
+        },
+        "position": {
+          "basis": "644px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "backgroundColor": "rgba(36,46,48,0.55)",
+            "borderBottomColor": "rgba(92,166,196,0.18)",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": 1,
+            "borderLeftColor": "rgba(92,166,196,0.18)",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": 1,
+            "borderRadius": "10px",
+            "borderRightColor": "rgba(92,166,196,0.18)",
+            "borderRightStyle": "solid",
+            "borderRightWidth": 1,
+            "borderTopColor": "#DEBF7A",
+            "borderTopStyle": "solid",
+            "borderTopWidth": 3,
+            "margin": "4px 16px 4px 16px",
+            "overflow": "hidden"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "DiagTitle"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "PLANT DIAGNOSTICS - HYDRAULIC PUMPS",
+                  "textStyle": {
+                    "color": "#DEBF7A",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "1.5px"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "DiagHint"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "props": {
+                  "style": {
+                    "textAlign": "right",
+                    "whiteSpace": "nowrap"
+                  },
+                  "text": "Open a card for the full per-sensor breakdown",
+                  "textStyle": {
+                    "color": "#80878A",
+                    "fontSize": 9
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "DiagHeader"
+            },
+            "position": {
+              "basis": "34px",
+              "shrink": 0
+            },
+            "props": {
+              "alignItems": "center",
+              "style": {
+                "backgroundColor": "rgba(36,46,48,0.85)",
+                "gap": "8px",
+                "padding": "0px 14px"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Hyd_SDB"
+                },
+                "position": {
+                  "basis": "0px",
+                  "grow": 1
+                },
+                "props": {
+                  "params": {
+                    "Area": "SDB"
+                  },
+                  "path": "Application/Safety/Components/HydraulicsDiagnosticsCard",
+                  "style": {
+                    "height": "358px"
+                  }
+                },
+                "type": "ia.display.view"
+              },
+              {
+                "meta": {
+                  "name": "Hyd_GRA"
+                },
+                "position": {
+                  "basis": "0px",
+                  "grow": 1
+                },
+                "props": {
+                  "params": {
+                    "Area": "GRA"
+                  },
+                  "path": "Application/Safety/Components/HydraulicsDiagnosticsCard",
+                  "style": {
+                    "height": "358px"
+                  }
+                },
+                "type": "ia.display.view"
+              },
+              {
+                "meta": {
+                  "name": "Hyd_COS"
+                },
+                "position": {
+                  "basis": "0px",
+                  "grow": 1
+                },
+                "props": {
+                  "params": {
+                    "Area": "COS"
+                  },
+                  "path": "Application/Safety/Components/HydraulicsDiagnosticsCard",
+                  "style": {
+                    "height": "358px"
+                  }
+                },
+                "type": "ia.display.view"
+              },
+              {
+                "meta": {
+                  "name": "Hyd_TNB"
+                },
+                "position": {
+                  "basis": "0px",
+                  "grow": 1
+                },
+                "props": {
+                  "params": {
+                    "Area": "TNB"
+                  },
+                  "path": "Application/Safety/Components/HydraulicsDiagnosticsCard",
+                  "style": {
+                    "height": "358px"
+                  }
+                },
+                "type": "ia.display.view"
+              }
+            ],
+            "meta": {
+              "name": "HydRow"
+            },
+            "position": {
+              "basis": "0px",
+              "grow": 1
+            },
+            "props": {
+              "alignItems": "start",
+              "style": {
+                "gap": "12px",
+                "overflow": "hidden",
+                "padding": "12px"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "HydPanel"
+        },
+        "position": {
+          "basis": "420px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "backgroundColor": "rgba(36,46,48,0.55)",
+            "borderBottomColor": "rgba(92,166,196,0.18)",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": 1,
+            "borderLeftColor": "rgba(92,166,196,0.18)",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": 1,
+            "borderRadius": "10px",
+            "borderRightColor": "rgba(92,166,196,0.18)",
+            "borderRightStyle": "solid",
+            "borderRightWidth": 1,
+            "borderTopColor": "#DEBF7A",
+            "borderTopStyle": "solid",
+            "borderTopWidth": 3,
+            "margin": "4px 16px 16px 16px",
+            "overflow": "hidden"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "DiagTitle"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "SMART MOTOR CONDITION MONITORING",
+                  "textStyle": {
+                    "color": "#DEBF7A",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "1.5px"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "DiagHint"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "props": {
+                  "style": {
+                    "textAlign": "right",
+                    "whiteSpace": "nowrap"
+                  },
+                  "text": "IO-Link vibration + temperature - Chipper and Grader motors",
+                  "textStyle": {
+                    "color": "#80878A",
+                    "fontSize": 9
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "DiagHeader"
+            },
+            "position": {
+              "basis": "34px",
+              "shrink": 0
+            },
+            "props": {
+              "alignItems": "center",
+              "style": {
+                "backgroundColor": "rgba(36,46,48,0.85)",
+                "gap": "8px",
+                "padding": "0px 14px"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "CM_DSC1"
+                },
+                "position": {
+                  "basis": "0px",
+                  "grow": 1
+                },
+                "props": {
+                  "params": {
+                    "Code": "CHP",
+                    "Motor": "DiscMotor1",
+                    "MotorName": "Chipper Disc Motor 1",
+                    "ScaleMax": 25,
+                    "Sensor": "VVB010",
+                    "ZoneAB": 2.3,
+                    "ZoneBC": 4.5,
+                    "ZoneCD": 7.1
+                  },
+                  "path": "Application/Safety/Components/CMVibrationCard",
+                  "style": {
+                    "height": "320px"
+                  }
+                },
+                "type": "ia.display.view"
+              },
+              {
+                "meta": {
+                  "name": "CM_DSC2"
+                },
+                "position": {
+                  "basis": "0px",
+                  "grow": 1
+                },
+                "props": {
+                  "params": {
+                    "Code": "CHP",
+                    "Motor": "DiscMotor2",
+                    "MotorName": "Chipper Disc Motor 2",
+                    "ScaleMax": 25,
+                    "Sensor": "VVB010",
+                    "ZoneAB": 2.3,
+                    "ZoneBC": 4.5,
+                    "ZoneCD": 7.1
+                  },
+                  "path": "Application/Safety/Components/CMVibrationCard",
+                  "style": {
+                    "height": "320px"
+                  }
+                },
+                "type": "ia.display.view"
+              },
+              {
+                "meta": {
+                  "name": "CM_DRM"
+                },
+                "position": {
+                  "basis": "0px",
+                  "grow": 1
+                },
+                "props": {
+                  "params": {
+                    "Code": "CHP",
+                    "Motor": "DrumChipper",
+                    "MotorName": "Drum Chipper Motor",
+                    "ScaleMax": 25,
+                    "Sensor": "VVB301",
+                    "ZoneAB": 2.3,
+                    "ZoneBC": 4.5,
+                    "ZoneCD": 7.1
+                  },
+                  "path": "Application/Safety/Components/CMVibrationCard",
+                  "style": {
+                    "height": "320px"
+                  }
+                },
+                "type": "ia.display.view"
+              },
+              {
+                "meta": {
+                  "name": "CM_GRAOF"
+                },
+                "position": {
+                  "basis": "0px",
+                  "grow": 1
+                },
+                "props": {
+                  "params": {
+                    "Code": "GRA",
+                    "Folder": "Grader",
+                    "Motor": "OutfeedMotor",
+                    "MotorName": "Grader Outfeed Motor",
+                    "ScaleMax": 25,
+                    "Sensor": "VVB301",
+                    "ZoneAB": 2.3,
+                    "ZoneBC": 4.5,
+                    "ZoneCD": 7.1
+                  },
+                  "path": "Application/Safety/Components/CMVibrationCard",
+                  "style": {
+                    "height": "320px"
+                  }
+                },
+                "type": "ia.display.view"
+              }
+            ],
+            "meta": {
+              "name": "CMRow"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "alignItems": "start",
+              "style": {
+                "gap": "12px",
+                "padding": "12px"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Knife_DISC"
+                },
+                "position": {
+                  "basis": "0px",
+                  "grow": 1
+                },
+                "props": {
+                  "params": {
+                    "Machine": "DISC1",
+                    "Title": "Disc Chipper",
+                    "WriteMachines": "DISC1,DISC2"
+                  },
+                  "path": "Application/Safety/Components/CMKnifeCard",
+                  "style": {
+                    "height": "200px"
+                  }
+                },
+                "type": "ia.display.view"
+              },
+              {
+                "meta": {
+                  "name": "Knife_DRUM"
+                },
+                "position": {
+                  "basis": "0px",
+                  "grow": 1
+                },
+                "props": {
+                  "params": {
+                    "Machine": "DRUM",
+                    "Title": "Drum Chipper",
+                    "WriteMachines": "DRUM"
+                  },
+                  "path": "Application/Safety/Components/CMKnifeCard",
+                  "style": {
+                    "height": "200px"
+                  }
+                },
+                "type": "ia.display.view"
+              }
+            ],
+            "meta": {
+              "name": "KnifeRow"
+            },
+            "position": {
+              "basis": "216px",
+              "shrink": 0
+            },
+            "props": {
+              "alignItems": "start",
+              "style": {
+                "gap": "12px",
+                "overflow": "hidden",
+                "paddingBottom": "12px",
+                "paddingLeft": "12px",
+                "paddingRight": "12px"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "CMPanel"
+        },
+        "position": {
+          "basis": "612px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "backgroundColor": "rgba(36,46,48,0.55)",
+            "borderBottomColor": "rgba(92,166,196,0.18)",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": 1,
+            "borderLeftColor": "rgba(92,166,196,0.18)",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": 1,
+            "borderRadius": "10px",
+            "borderRightColor": "rgba(92,166,196,0.18)",
+            "borderRightStyle": "solid",
+            "borderRightWidth": 1,
+            "borderTopColor": "#DEBF7A",
+            "borderTopStyle": "solid",
+            "borderTopWidth": 3,
+            "margin": "4px 16px 16px 16px",
+            "overflow": "hidden"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "DiagTitle"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "PLANT DIAGNOSTICS",
+                  "textStyle": {
+                    "color": "#DEBF7A",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "1.5px"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "DiagHint"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "props": {
+                  "style": {
+                    "textAlign": "right",
+                    "whiteSpace": "nowrap"
+                  },
+                  "text": "Open a card for the full per-sensor breakdown",
+                  "textStyle": {
+                    "color": "#80878A",
+                    "fontSize": 9
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "DiagHeader"
+            },
+            "position": {
+              "basis": "34px",
+              "shrink": 0
+            },
+            "props": {
+              "alignItems": "center",
+              "style": {
+                "backgroundColor": "rgba(36,46,48,0.85)",
+                "gap": "8px",
+                "padding": "0px 14px"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Diag_DEBARKER"
+                },
+                "position": {
+                  "basis": "0px",
+                  "grow": 1
+                },
+                "props": {
+                  "params": {
+                    "Area": "DEBARKER"
+                  },
+                  "path": "Application/Safety/Components/AreaDiagnosticsCard",
+                  "style": {
+                    "height": "286px"
+                  }
+                },
+                "type": "ia.display.view"
+              },
+              {
+                "meta": {
+                  "name": "Diag_GRADING"
+                },
+                "position": {
+                  "basis": "0px",
+                  "grow": 1
+                },
+                "props": {
+                  "params": {
+                    "Area": "GRADING"
+                  },
+                  "path": "Application/Safety/Components/AreaDiagnosticsCard",
+                  "style": {
+                    "height": "286px"
+                  }
+                },
+                "type": "ia.display.view"
+              },
+              {
+                "meta": {
+                  "name": "Diag_COS"
+                },
+                "position": {
+                  "basis": "0px",
+                  "grow": 1
+                },
+                "props": {
+                  "params": {
+                    "Area": "COS"
+                  },
+                  "path": "Application/Safety/Components/AreaDiagnosticsCard",
+                  "style": {
+                    "height": "286px"
+                  }
+                },
+                "type": "ia.display.view"
+              },
+              {
+                "meta": {
+                  "name": "Diag_SORTLINE"
+                },
+                "position": {
+                  "basis": "0px",
+                  "grow": 1
+                },
+                "props": {
+                  "params": {
+                    "Area": "SORTLINE"
+                  },
+                  "path": "Application/Safety/Components/AreaDiagnosticsCard",
+                  "style": {
+                    "height": "286px"
+                  }
+                },
+                "type": "ia.display.view"
+              }
+            ],
+            "meta": {
+              "name": "DiagRow"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "alignItems": "start",
+              "style": {
+                "gap": "12px",
+                "padding": "12px"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "DiagPanel"
+        },
+        "position": {
+          "basis": "354px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "backgroundColor": "rgba(36,46,48,0.55)",
+            "borderBottomColor": "rgba(92,166,196,0.18)",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": 1,
+            "borderLeftColor": "rgba(92,166,196,0.18)",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": 1,
+            "borderRadius": "10px",
+            "borderRightColor": "rgba(92,166,196,0.18)",
+            "borderRightStyle": "solid",
+            "borderRightWidth": 1,
+            "borderTopColor": "#DEBF7A",
+            "borderTopStyle": "solid",
+            "borderTopWidth": 3,
+            "margin": "4px 16px 16px 16px",
+            "overflow": "hidden"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "DiagTitle"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "PLANT DIAGNOSTICS - SAW BLADES",
+                  "textStyle": {
+                    "color": "#DEBF7A",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "1.5px"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "DiagHint"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "props": {
+                  "style": {
+                    "textAlign": "right",
+                    "whiteSpace": "nowrap"
+                  },
+                  "text": "Blade change \u003d press SAW BLADE CHANGE WO on the card when it happens - no schedule, nothing is auto-logged",
+                  "textStyle": {
+                    "color": "#80878A",
+                    "fontSize": 9
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "DiagHeader"
+            },
+            "position": {
+              "basis": "34px",
+              "shrink": 0
+            },
+            "props": {
+              "alignItems": "center",
+              "style": {
+                "backgroundColor": "rgba(36,46,48,0.85)",
+                "gap": "8px",
+                "padding": "0px 14px"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Blade_ASAW"
+                },
+                "position": {
+                  "basis": "0px",
+                  "grow": 1
+                },
+                "props": {
+                  "params": {
+                    "Machine": "ASAW",
+                    "MethodTitle": "Saw blade bluntness - method",
+                    "MethodView": "Application/Safety/Components/CMSawBladeMethod",
+                    "Title": "A Saw",
+                    "Tool": "Saw Blade",
+                    "WriteMachines": "ASAW"
+                  },
+                  "path": "Application/Safety/Components/CMKnifeCard",
+                  "style": {
+                    "height": "200px"
+                  }
+                },
+                "type": "ia.display.view"
+              },
+              {
+                "meta": {
+                  "name": "Blade_BSAW"
+                },
+                "position": {
+                  "basis": "0px",
+                  "grow": 1
+                },
+                "props": {
+                  "params": {
+                    "Machine": "BSAW",
+                    "MethodTitle": "Saw blade bluntness - method",
+                    "MethodView": "Application/Safety/Components/CMSawBladeMethod",
+                    "Title": "B Saw",
+                    "Tool": "Saw Blade",
+                    "WriteMachines": "BSAW"
+                  },
+                  "path": "Application/Safety/Components/CMKnifeCard",
+                  "style": {
+                    "height": "200px"
+                  }
+                },
+                "type": "ia.display.view"
+              },
+              {
+                "meta": {
+                  "name": "Blade_CSAW"
+                },
+                "position": {
+                  "basis": "0px",
+                  "grow": 1
+                },
+                "props": {
+                  "params": {
+                    "Machine": "CSAW",
+                    "MethodTitle": "Saw blade bluntness - method",
+                    "MethodView": "Application/Safety/Components/CMSawBladeMethod",
+                    "Title": "C Saw",
+                    "Tool": "Saw Blade",
+                    "WriteMachines": "CSAW"
+                  },
+                  "path": "Application/Safety/Components/CMKnifeCard",
+                  "style": {
+                    "height": "200px"
+                  }
+                },
+                "type": "ia.display.view"
+              }
+            ],
+            "meta": {
+              "name": "SawRow"
+            },
+            "position": {
+              "basis": "0px",
+              "grow": 1
+            },
+            "props": {
+              "alignItems": "start",
+              "style": {
+                "gap": "12px",
+                "overflow": "hidden",
+                "padding": "12px"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "SawPanel"
+        },
+        "position": {
+          "basis": "264px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "backgroundColor": "rgba(36,46,48,0.55)",
+            "borderBottomColor": "rgba(92,166,196,0.18)",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": 1,
+            "borderLeftColor": "rgba(92,166,196,0.18)",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": 1,
+            "borderRadius": "10px",
+            "borderRightColor": "rgba(92,166,196,0.18)",
+            "borderRightStyle": "solid",
+            "borderRightWidth": 1,
+            "borderTopColor": "#DEBF7A",
+            "borderTopStyle": "solid",
+            "borderTopWidth": 3,
+            "margin": "4px 16px 16px 16px",
+            "overflow": "hidden"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "VSDTitle"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "PLANT DIAGNOSTICS - VSDs",
+                  "textStyle": {
+                    "color": "#80878A",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "1.5px"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "VSDBadge"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "backgroundColor": "#80878A",
+                    "borderRadius": "3px",
+                    "padding": "1px 6px"
+                  },
+                  "text": "COMING SOON",
+                  "textStyle": {
+                    "color": "#242E30",
+                    "fontSize": 8,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.5px"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "VSDHint"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "props": {
+                  "style": {
+                    "textAlign": "right",
+                    "whiteSpace": "nowrap"
+                  },
+                  "text": "Reserved for VSD diagnostics",
+                  "textStyle": {
+                    "color": "#80878A",
+                    "fontSize": 9
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "VSDHeader"
+            },
+            "position": {
+              "basis": "34px",
+              "shrink": 0
+            },
+            "props": {
+              "alignItems": "center",
+              "style": {
+                "backgroundColor": "rgba(36,46,48,0.70)",
+                "gap": "8px",
+                "padding": "0px 14px"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "VSDPanel"
+        },
+        "position": {
+          "grow": 1
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "backgroundColor": "rgba(36,46,48,0.40)",
+            "borderBottomColor": "rgba(128,135,138,0.18)",
+            "borderBottomStyle": "dashed",
+            "borderBottomWidth": 1,
+            "borderLeftColor": "rgba(128,135,138,0.18)",
+            "borderLeftStyle": "dashed",
+            "borderLeftWidth": 1,
+            "borderRadius": "10px",
+            "borderRightColor": "rgba(128,135,138,0.18)",
+            "borderRightStyle": "dashed",
+            "borderRightWidth": 1,
+            "borderTopColor": "rgba(128,135,138,0.45)",
+            "borderTopStyle": "dashed",
+            "borderTopWidth": 2,
+            "margin": "0px 16px 16px 16px",
+            "overflow": "hidden"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "SafetyPlantOverview_v1_25_1"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "backgroundColor": "#1A2224",
+        "backgroundImage": "linear-gradient(180deg, rgba(10,18,24,0.55) 0%, rgba(10,18,24,0.05) 320px)"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

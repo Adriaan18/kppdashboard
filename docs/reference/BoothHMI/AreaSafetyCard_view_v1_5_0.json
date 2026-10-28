@@ -1,0 +1,1456 @@
+{
+  "custom": {
+    "areaName": "Stem Debarker",
+    "deenCount": 0,
+    "enCount": 0,
+    "estopsOk": true,
+    "faultCount": 0,
+    "gatesOk": false,
+    "hogStandstill": false,
+    "igCount": 4,
+    "isoCount": 4,
+    "isolatorsOk": false,
+    "prefix": "[TL-KPPWS01-01]KPP/StemDB/Data/Safety/",
+    "rbPath": "[TL-KPPWS01-01]KPP/StemDB/Data/Safety/SDB_HMI_RB",
+    "reset": {
+      "area": "SDB",
+      "bg": "#DEBF7A",
+      "border": "#D4A863",
+      "busy": false,
+      "can": true,
+      "cardBg": "",
+      "cardFg": "#F6E6B8",
+      "cls": "gbtn gbtn-gold",
+      "fg": "#242E30",
+      "note": "",
+      "sub": "",
+      "text": "RESET ALL IGs",
+      "tip": ""
+    },
+    "route": "/Safety/SDB",
+    "standstillBad": true,
+    "standstillsOk": false
+  },
+  "params": {
+    "Area": "SDB"
+  },
+  "propConfig": {
+    "custom.areaName": {
+      "binding": {
+        "config": {
+          "expression": "case({view.params.Area},\r\n\t\"SDB\", \"Stem Debarker\",\r\n\t\"GRA\", \"Grading\",\r\n\t\"COS\", \"\",\r\n\t\"TNB\", \"T\u0026B\",\r\n\t\"CHP\", \"Chippers\",\r\n\t\"HOG\", \"Hogger\",\r\n\t\"DDB\", \"\",\r\n\t\"\"\r\n)"
+        },
+        "type": "expr"
+      },
+      "persistent": true
+    },
+    "custom.deenCount": {
+      "binding": {
+        "config": {
+          "expression": "if({view.custom.igCount} \u003e\u003d 1,\r\n\tif(!coalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG1/GroupTags/GroupEn\"), false)\r\n\t\t\u0026\u0026 !coalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG1/GroupTags/GroupIsolated\"), false)\r\n\t\t\u0026\u0026 !coalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG1/GroupTags/GroupFaultActive\"), false),\r\n\t1, 0),\r\n\t0\r\n) +\r\nif({view.custom.igCount} \u003e\u003d 2,\r\n\tif(!coalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG2/GroupTags/GroupEn\"), false)\r\n\t\t\u0026\u0026 !coalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG2/GroupTags/GroupIsolated\"), false)\r\n\t\t\u0026\u0026 !coalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG2/GroupTags/GroupFaultActive\"), false),\r\n\t1, 0),\r\n\t0\r\n) +\r\nif({view.custom.igCount} \u003e\u003d 3,\r\n\tif(!coalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG3/GroupTags/GroupEn\"), false)\r\n\t\t\u0026\u0026 !coalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG3/GroupTags/GroupIsolated\"), false)\r\n\t\t\u0026\u0026 !coalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG3/GroupTags/GroupFaultActive\"), false),\r\n\t1, 0),\r\n\t0\r\n) +\r\nif({view.custom.igCount} \u003e\u003d 4,\r\n\tif(!coalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG4/GroupTags/GroupEn\"), false)\r\n\t\t\u0026\u0026 !coalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG4/GroupTags/GroupIsolated\"), false)\r\n\t\t\u0026\u0026 !coalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG4/GroupTags/GroupFaultActive\"), false),\r\n\t1, 0),\r\n\t0\r\n) +\r\nif({view.custom.igCount} \u003e\u003d 5,\r\n\tif(!coalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG5/GroupTags/GroupEn\"), false)\r\n\t\t\u0026\u0026 !coalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG5/GroupTags/GroupIsolated\"), false)\r\n\t\t\u0026\u0026 !coalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG5/GroupTags/GroupFaultActive\"), false),\r\n\t1, 0),\r\n\t0\r\n) +\r\nif({view.custom.igCount} \u003e\u003d 6,\r\n\tif(!coalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG6/GroupTags/GroupEn\"), false)\r\n\t\t\u0026\u0026 !coalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG6/GroupTags/GroupIsolated\"), false)\r\n\t\t\u0026\u0026 !coalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG6/GroupTags/GroupFaultActive\"), false),\r\n\t1, 0),\r\n\t0\r\n)"
+        },
+        "type": "expr"
+      },
+      "persistent": true
+    },
+    "custom.enCount": {
+      "binding": {
+        "config": {
+          "expression": "if(if({view.custom.igCount} \u003e\u003d 1,\r\n\t\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG1/GroupTags/GroupEn\"), false),\r\n\t\tfalse\r\n\t), 1, 0) +\r\nif(if({view.custom.igCount} \u003e\u003d 2,\r\n\t\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG2/GroupTags/GroupEn\"), false),\r\n\t\tfalse\r\n\t), 1, 0) +\r\nif(if({view.custom.igCount} \u003e\u003d 3,\r\n\t\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG3/GroupTags/GroupEn\"), false),\r\n\t\tfalse\r\n\t), 1, 0) +\r\nif(if({view.custom.igCount} \u003e\u003d 4,\r\n\t\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG4/GroupTags/GroupEn\"), false),\r\n\t\tfalse\r\n\t), 1, 0) +\r\nif(if({view.custom.igCount} \u003e\u003d 5,\r\n\t\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG5/GroupTags/GroupEn\"), false),\r\n\t\tfalse\r\n\t), 1, 0) +\r\nif(if({view.custom.igCount} \u003e\u003d 6,\r\n\t\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG6/GroupTags/GroupEn\"), false),\r\n\t\tfalse\r\n\t), 1, 0)"
+        },
+        "type": "expr"
+      },
+      "persistent": true
+    },
+    "custom.estopsOk": {
+      "binding": {
+        "config": {
+          "expression": "(if({view.custom.igCount} \u003e\u003d 1,\r\n\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG1/GroupTags/AllEstopsOk\"), false),\r\n\ttrue\r\n)) \u0026\u0026\r\n(if({view.custom.igCount} \u003e\u003d 2,\r\n\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG2/GroupTags/AllEstopsOk\"), false),\r\n\ttrue\r\n)) \u0026\u0026\r\n(if({view.custom.igCount} \u003e\u003d 3,\r\n\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG3/GroupTags/AllEstopsOk\"), false),\r\n\ttrue\r\n)) \u0026\u0026\r\n(if({view.custom.igCount} \u003e\u003d 4,\r\n\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG4/GroupTags/AllEstopsOk\"), false),\r\n\ttrue\r\n)) \u0026\u0026\r\n(if({view.custom.igCount} \u003e\u003d 5,\r\n\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG5/GroupTags/AllEstopsOk\"), false),\r\n\ttrue\r\n)) \u0026\u0026\r\n(if({view.custom.igCount} \u003e\u003d 6,\r\n\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG6/GroupTags/AllEstopsOk\"), false),\r\n\ttrue\r\n))"
+        },
+        "type": "expr"
+      },
+      "persistent": true
+    },
+    "custom.faultCount": {
+      "binding": {
+        "config": {
+          "expression": "if(if({view.custom.igCount} \u003e\u003d 1,\r\n\t\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG1/GroupTags/GroupFaultActive\"), false),\r\n\t\tfalse\r\n\t), 1, 0) +\r\nif(if({view.custom.igCount} \u003e\u003d 2,\r\n\t\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG2/GroupTags/GroupFaultActive\"), false),\r\n\t\tfalse\r\n\t), 1, 0) +\r\nif(if({view.custom.igCount} \u003e\u003d 3,\r\n\t\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG3/GroupTags/GroupFaultActive\"), false),\r\n\t\tfalse\r\n\t), 1, 0) +\r\nif(if({view.custom.igCount} \u003e\u003d 4,\r\n\t\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG4/GroupTags/GroupFaultActive\"), false),\r\n\t\tfalse\r\n\t), 1, 0) +\r\nif(if({view.custom.igCount} \u003e\u003d 5,\r\n\t\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG5/GroupTags/GroupFaultActive\"), false),\r\n\t\tfalse\r\n\t), 1, 0) +\r\nif(if({view.custom.igCount} \u003e\u003d 6,\r\n\t\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG6/GroupTags/GroupFaultActive\"), false),\r\n\t\tfalse\r\n\t), 1, 0)"
+        },
+        "type": "expr"
+      },
+      "persistent": true
+    },
+    "custom.gatesOk": {
+      "binding": {
+        "config": {
+          "expression": "(if({view.custom.igCount} \u003e\u003d 1,\r\n\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG1/GroupTags/AllGatesOk\"), false),\r\n\ttrue\r\n)) \u0026\u0026\r\n(if({view.custom.igCount} \u003e\u003d 2,\r\n\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG2/GroupTags/AllGatesOk\"), false),\r\n\ttrue\r\n)) \u0026\u0026\r\n(if({view.custom.igCount} \u003e\u003d 3,\r\n\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG3/GroupTags/AllGatesOk\"), false),\r\n\ttrue\r\n)) \u0026\u0026\r\n(if({view.custom.igCount} \u003e\u003d 4,\r\n\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG4/GroupTags/AllGatesOk\"), false),\r\n\ttrue\r\n)) \u0026\u0026\r\n(if({view.custom.igCount} \u003e\u003d 5,\r\n\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG5/GroupTags/AllGatesOk\"), false),\r\n\ttrue\r\n)) \u0026\u0026\r\n(if({view.custom.igCount} \u003e\u003d 6,\r\n\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG6/GroupTags/AllGatesOk\"), false),\r\n\ttrue\r\n))"
+        },
+        "type": "expr"
+      },
+      "persistent": true
+    },
+    "custom.hogStandstill": {
+      "binding": {
+        "config": {
+          "expression": "// v1.3.0: the hogger\u0027s own standstill monitors - HOG_SS_01 (Hogger VSD 1) and HOG_SS_02 (Hogger VSD 2), the tags the HOG Map uses.\r\n// HOG_Safety rung 5 of every IG is a bare OTE(HOG_IGx.AllStandstillsOk), always true, so the IG bit cannot be used here.\r\nif({view.params.Area} \u003d \"HOG\",\r\n\tcoalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Devices/Safety/HOG_SS_01/InputOkay\"), false) \u0026\u0026 coalesce(tag(\"[TL-KPPWS01-01]KPP/HOG/Devices/Safety/HOG_SS_02/InputOkay\"), false),\r\n\tfalse\r\n)"
+        },
+        "type": "expr"
+      },
+      "persistent": true
+    },
+    "custom.igCount": {
+      "binding": {
+        "config": {
+          "expression": "case({view.params.Area},\r\n\t\"SDB\", 4,\r\n\t\"GRA\", 3,\r\n\t\"COS\", 2,\r\n\t\"TNB\", 5,\r\n\t\"CHP\", 6,\r\n\t\"HOG\", 5,\r\n\t\"DDB\", 1,\r\n\t0\r\n)"
+        },
+        "type": "expr"
+      },
+      "persistent": true
+    },
+    "custom.isoCount": {
+      "binding": {
+        "config": {
+          "expression": "if(if({view.custom.igCount} \u003e\u003d 1,\r\n\t\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG1/GroupTags/GroupIsolated\"), false),\r\n\t\tfalse\r\n\t), 1, 0) +\r\nif(if({view.custom.igCount} \u003e\u003d 2,\r\n\t\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG2/GroupTags/GroupIsolated\"), false),\r\n\t\tfalse\r\n\t), 1, 0) +\r\nif(if({view.custom.igCount} \u003e\u003d 3,\r\n\t\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG3/GroupTags/GroupIsolated\"), false),\r\n\t\tfalse\r\n\t), 1, 0) +\r\nif(if({view.custom.igCount} \u003e\u003d 4,\r\n\t\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG4/GroupTags/GroupIsolated\"), false),\r\n\t\tfalse\r\n\t), 1, 0) +\r\nif(if({view.custom.igCount} \u003e\u003d 5,\r\n\t\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG5/GroupTags/GroupIsolated\"), false),\r\n\t\tfalse\r\n\t), 1, 0) +\r\nif(if({view.custom.igCount} \u003e\u003d 6,\r\n\t\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG6/GroupTags/GroupIsolated\"), false),\r\n\t\tfalse\r\n\t), 1, 0)"
+        },
+        "type": "expr"
+      },
+      "persistent": true
+    },
+    "custom.isolatorsOk": {
+      "binding": {
+        "config": {
+          "expression": "(if({view.custom.igCount} \u003e\u003d 1,\r\n\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG1/GroupTags/AllIsolatorsOk\"), false),\r\n\ttrue\r\n)) \u0026\u0026\r\n(if({view.custom.igCount} \u003e\u003d 2,\r\n\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG2/GroupTags/AllIsolatorsOk\"), false),\r\n\ttrue\r\n)) \u0026\u0026\r\n(if({view.custom.igCount} \u003e\u003d 3,\r\n\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG3/GroupTags/AllIsolatorsOk\"), false),\r\n\ttrue\r\n)) \u0026\u0026\r\n(if({view.custom.igCount} \u003e\u003d 4,\r\n\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG4/GroupTags/AllIsolatorsOk\"), false),\r\n\ttrue\r\n)) \u0026\u0026\r\n(if({view.custom.igCount} \u003e\u003d 5,\r\n\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG5/GroupTags/AllIsolatorsOk\"), false),\r\n\ttrue\r\n)) \u0026\u0026\r\n(if({view.custom.igCount} \u003e\u003d 6,\r\n\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG6/GroupTags/AllIsolatorsOk\"), false),\r\n\ttrue\r\n))"
+        },
+        "type": "expr"
+      },
+      "persistent": true
+    },
+    "custom.prefix": {
+      "binding": {
+        "config": {
+          "expression": "case({view.params.Area},\r\n\t\"SDB\", \"[TL-KPPWS01-01]KPP/StemDB/Data/Safety/\",\r\n\t\"GRA\", \"[TL-KPPWS01-01]KPP/Grader/Data/Safety/\",\r\n\t\"COS\", \"[TL-KPPWS01-01]KPP/COS/Area/Data/Safety/\",\r\n\t\"TNB\", \"[TL-KPPWS01-01]KPP/TnB/Data/Safety/\",\r\n\t\"CHP\", \"[TL-KPPWS01-01]KPP/Chippers/Data/Safety/\",\r\n\t\"HOG\", \"[TL-KPPWS01-01]KPP/HOG/Data/Safety/\",\r\n\t\"DDB\", \"[TL-KPPWS01-01]KPP/DrumDB/Data/Safety/\",\r\n\t\"\"\r\n)"
+        },
+        "type": "expr"
+      },
+      "persistent": true
+    },
+    "custom.rbPath": {
+      "binding": {
+        "config": {
+          "expression": "{view.custom.prefix} + {view.params.Area} + \"_HMI_RB\""
+        },
+        "type": "expr"
+      },
+      "persistent": true
+    },
+    "custom.reset": {
+      "binding": {
+        "config": {
+          "expression": "runScript(\u0027booth.safetyreset.state\u0027, 500, {view.params.Area})"
+        },
+        "type": "expr"
+      },
+      "persistent": true
+    },
+    "custom.route": {
+      "binding": {
+        "config": {
+          "expression": "\"/Safety/\" + {view.params.Area}"
+        },
+        "type": "expr"
+      },
+      "persistent": true
+    },
+    "custom.standstillBad": {
+      "binding": {
+        "config": {
+          "expression": "// v1.3.0: HOG - not at standstill while IG5 (HOG Area, which switches Hogger VSD 1 and 2: HOG_IK_11 / HOG_IK_12) is de-energised\r\nif({view.params.Area} \u003d \"HOG\",\r\n\t!{view.custom.hogStandstill} \u0026\u0026 !coalesce(tag({view.custom.prefix} + \"HOG_IG5/GroupTags/GroupEn\"), false),\r\n// v1.1.0: true when an isolation group is NOT energised and its machines are not at standstill - still turning after a\r\n// stop, or a standstill monitor problem. Not at standstill while energised is the machine running: normal.\r\n(if({view.custom.igCount} \u003e\u003d 1,\r\n\t!coalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG1/GroupTags/AllStandstillsOk\"), false)\r\n\t\t\u0026\u0026 !coalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG1/GroupTags/GroupEn\"), false),\r\n\tfalse\r\n)) ||\r\n(if({view.custom.igCount} \u003e\u003d 2,\r\n\t!coalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG2/GroupTags/AllStandstillsOk\"), false)\r\n\t\t\u0026\u0026 !coalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG2/GroupTags/GroupEn\"), false),\r\n\tfalse\r\n)) ||\r\n(if({view.custom.igCount} \u003e\u003d 3,\r\n\t!coalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG3/GroupTags/AllStandstillsOk\"), false)\r\n\t\t\u0026\u0026 !coalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG3/GroupTags/GroupEn\"), false),\r\n\tfalse\r\n)) ||\r\n(if({view.custom.igCount} \u003e\u003d 4,\r\n\t!coalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG4/GroupTags/AllStandstillsOk\"), false)\r\n\t\t\u0026\u0026 !coalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG4/GroupTags/GroupEn\"), false),\r\n\tfalse\r\n)) ||\r\n(if({view.custom.igCount} \u003e\u003d 5,\r\n\t!coalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG5/GroupTags/AllStandstillsOk\"), false)\r\n\t\t\u0026\u0026 !coalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG5/GroupTags/GroupEn\"), false),\r\n\tfalse\r\n)) ||\r\n(if({view.custom.igCount} \u003e\u003d 6,\r\n\t!coalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG6/GroupTags/AllStandstillsOk\"), false)\r\n\t\t\u0026\u0026 !coalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG6/GroupTags/GroupEn\"), false),\r\n\tfalse\r\n))\r\n)"
+        },
+        "type": "expr"
+      },
+      "persistent": true
+    },
+    "custom.standstillsOk": {
+      "binding": {
+        "config": {
+          "expression": "// v1.3.0: HOG from its monitors (custom.hogStandstill), every other area from its isolation groups\r\nif({view.params.Area} \u003d \"HOG\", {view.custom.hogStandstill},\r\n(if({view.custom.igCount} \u003e\u003d 1,\r\n\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG1/GroupTags/AllStandstillsOk\"), false),\r\n\ttrue\r\n)) \u0026\u0026\r\n(if({view.custom.igCount} \u003e\u003d 2,\r\n\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG2/GroupTags/AllStandstillsOk\"), false),\r\n\ttrue\r\n)) \u0026\u0026\r\n(if({view.custom.igCount} \u003e\u003d 3,\r\n\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG3/GroupTags/AllStandstillsOk\"), false),\r\n\ttrue\r\n)) \u0026\u0026\r\n(if({view.custom.igCount} \u003e\u003d 4,\r\n\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG4/GroupTags/AllStandstillsOk\"), false),\r\n\ttrue\r\n)) \u0026\u0026\r\n(if({view.custom.igCount} \u003e\u003d 5,\r\n\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG5/GroupTags/AllStandstillsOk\"), false),\r\n\ttrue\r\n)) \u0026\u0026\r\n(if({view.custom.igCount} \u003e\u003d 6,\r\n\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG6/GroupTags/AllStandstillsOk\"), false),\r\n\ttrue\r\n))\r\n)"
+        },
+        "type": "expr"
+      },
+      "persistent": true
+    },
+    "params.Area": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 196,
+      "width": 270
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Code"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.Area"
+                  },
+                  "type": "property"
+                },
+                "persistent": true
+              }
+            },
+            "props": {
+              "text": "SDB",
+              "textStyle": {
+                "color": "#DEBF7A",
+                "fontSize": 22,
+                "fontWeight": "800",
+                "letterSpacing": "1px"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Name"
+            },
+            "position": {
+              "grow": 1
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.areaName"
+                  },
+                  "type": "property"
+                },
+                "persistent": true
+              }
+            },
+            "props": {
+              "style": {
+                "marginTop": "6px",
+                "overflow": "hidden",
+                "textOverflow": "ellipsis",
+                "whiteSpace": "nowrap"
+              },
+              "text": "Stem Debarker",
+              "textStyle": {
+                "color": "#80878A",
+                "fontSize": 11
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "StatePill"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.style.backgroundColor": {
+                "binding": {
+                  "config": {
+                    "expression": "if({view.custom.faultCount} \u003e 0, \"#C02026\",\r\n\tif({view.custom.deenCount} \u003e 0, \"#DC7323\",\r\n\t\tif({view.custom.isoCount} \u003e 0, \"#EBC452\", \"#0A733A\")\r\n\t)\r\n)"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "expression": "if({view.custom.faultCount} \u003e 0,\r\n\tnumberFormat({view.custom.faultCount}, \"0\") + \" FAULT\" + if({view.custom.faultCount} \u003e 1, \"S\", \"\"),\r\n\tif({view.custom.deenCount} \u003e 0,\r\n\t\tnumberFormat({view.custom.deenCount}, \"0\") + \" DE-ENERG.\",\r\n\t\tif({view.custom.isoCount} \u003e 0,\r\n\t\t\tnumberFormat({view.custom.isoCount}, \"0\") + \" ISOLATED\",\r\n\t\t\t\"ALL ENERGIZED\"\r\n\t\t)\r\n\t)\r\n)"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "props.textStyle.color": {
+                "binding": {
+                  "config": {
+                    "expression": "if({view.custom.faultCount} \u003d 0 \u0026\u0026 {view.custom.deenCount} \u003d 0 \u0026\u0026 {view.custom.isoCount} \u003e 0, \"#242E30\", \"#F3EEE7\")"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              }
+            },
+            "props": {
+              "style": {
+                "backgroundColor": "#EBC452",
+                "borderRadius": "10px",
+                "padding": "3px 8px 3px 8px",
+                "whiteSpace": "nowrap"
+              },
+              "text": "4 ISOLATED",
+              "textStyle": {
+                "color": "#242E30",
+                "fontSize": 9,
+                "fontWeight": "700",
+                "letterSpacing": "0.5px"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "Header"
+        },
+        "position": {
+          "basis": "30px",
+          "shrink": 0
+        },
+        "props": {
+          "alignItems": "center",
+          "style": {
+            "gap": "8px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "custom": {
+              "en": false,
+              "fault": false,
+              "iso": true
+            },
+            "meta": {
+              "name": "IG1"
+            },
+            "position": {
+              "basis": "30px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "custom.en": {
+                "binding": {
+                  "config": {
+                    "expression": "if({view.custom.igCount} \u003e\u003d 1,\r\n\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG1/GroupTags/GroupEn\"), false),\r\n\tfalse\r\n)"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "custom.fault": {
+                "binding": {
+                  "config": {
+                    "expression": "if({view.custom.igCount} \u003e\u003d 1,\r\n\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG1/GroupTags/GroupFaultActive\"), false),\r\n\tfalse\r\n)"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "custom.iso": {
+                "binding": {
+                  "config": {
+                    "expression": "if({view.custom.igCount} \u003e\u003d 1,\r\n\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG1/GroupTags/GroupIsolated\"), false),\r\n\tfalse\r\n)"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "meta.visible": {
+                "binding": {
+                  "config": {
+                    "expression": "{view.custom.igCount} \u003e\u003d 1"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "props.style.backgroundColor": {
+                "binding": {
+                  "config": {
+                    "expression": "if({this.custom.fault}, \"#C02026\",\r\n\tif({this.custom.en}, \"#36664A\",\r\n\t\tif({this.custom.iso}, \"#EBC452\", \"#DC7323\")\r\n\t)\r\n)"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "props.textStyle.color": {
+                "binding": {
+                  "config": {
+                    "expression": "if(!{this.custom.fault} \u0026\u0026 !{this.custom.en} \u0026\u0026 {this.custom.iso}, \"#242E30\", \"#F3EEE7\")"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              }
+            },
+            "props": {
+              "style": {
+                "backgroundColor": "#EBC452",
+                "borderRadius": "4px",
+                "height": "20px",
+                "lineHeight": "20px",
+                "overflow": "hidden",
+                "textAlign": "center"
+              },
+              "text": "IG1",
+              "textStyle": {
+                "color": "#242E30",
+                "fontSize": 10,
+                "fontWeight": "700"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "custom": {
+              "en": false,
+              "fault": false,
+              "iso": true
+            },
+            "meta": {
+              "name": "IG2"
+            },
+            "position": {
+              "basis": "30px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "custom.en": {
+                "binding": {
+                  "config": {
+                    "expression": "if({view.custom.igCount} \u003e\u003d 2,\r\n\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG2/GroupTags/GroupEn\"), false),\r\n\tfalse\r\n)"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "custom.fault": {
+                "binding": {
+                  "config": {
+                    "expression": "if({view.custom.igCount} \u003e\u003d 2,\r\n\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG2/GroupTags/GroupFaultActive\"), false),\r\n\tfalse\r\n)"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "custom.iso": {
+                "binding": {
+                  "config": {
+                    "expression": "if({view.custom.igCount} \u003e\u003d 2,\r\n\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG2/GroupTags/GroupIsolated\"), false),\r\n\tfalse\r\n)"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "meta.visible": {
+                "binding": {
+                  "config": {
+                    "expression": "{view.custom.igCount} \u003e\u003d 2"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "props.style.backgroundColor": {
+                "binding": {
+                  "config": {
+                    "expression": "if({this.custom.fault}, \"#C02026\",\r\n\tif({this.custom.en}, \"#36664A\",\r\n\t\tif({this.custom.iso}, \"#EBC452\", \"#DC7323\")\r\n\t)\r\n)"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "props.textStyle.color": {
+                "binding": {
+                  "config": {
+                    "expression": "if(!{this.custom.fault} \u0026\u0026 !{this.custom.en} \u0026\u0026 {this.custom.iso}, \"#242E30\", \"#F3EEE7\")"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              }
+            },
+            "props": {
+              "style": {
+                "backgroundColor": "#EBC452",
+                "borderRadius": "4px",
+                "height": "20px",
+                "lineHeight": "20px",
+                "overflow": "hidden",
+                "textAlign": "center"
+              },
+              "text": "IG2",
+              "textStyle": {
+                "color": "#242E30",
+                "fontSize": 10,
+                "fontWeight": "700"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "custom": {
+              "en": false,
+              "fault": false,
+              "iso": true
+            },
+            "meta": {
+              "name": "IG3"
+            },
+            "position": {
+              "basis": "30px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "custom.en": {
+                "binding": {
+                  "config": {
+                    "expression": "if({view.custom.igCount} \u003e\u003d 3,\r\n\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG3/GroupTags/GroupEn\"), false),\r\n\tfalse\r\n)"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "custom.fault": {
+                "binding": {
+                  "config": {
+                    "expression": "if({view.custom.igCount} \u003e\u003d 3,\r\n\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG3/GroupTags/GroupFaultActive\"), false),\r\n\tfalse\r\n)"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "custom.iso": {
+                "binding": {
+                  "config": {
+                    "expression": "if({view.custom.igCount} \u003e\u003d 3,\r\n\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG3/GroupTags/GroupIsolated\"), false),\r\n\tfalse\r\n)"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "meta.visible": {
+                "binding": {
+                  "config": {
+                    "expression": "{view.custom.igCount} \u003e\u003d 3"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "props.style.backgroundColor": {
+                "binding": {
+                  "config": {
+                    "expression": "if({this.custom.fault}, \"#C02026\",\r\n\tif({this.custom.en}, \"#36664A\",\r\n\t\tif({this.custom.iso}, \"#EBC452\", \"#DC7323\")\r\n\t)\r\n)"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "props.textStyle.color": {
+                "binding": {
+                  "config": {
+                    "expression": "if(!{this.custom.fault} \u0026\u0026 !{this.custom.en} \u0026\u0026 {this.custom.iso}, \"#242E30\", \"#F3EEE7\")"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              }
+            },
+            "props": {
+              "style": {
+                "backgroundColor": "#EBC452",
+                "borderRadius": "4px",
+                "height": "20px",
+                "lineHeight": "20px",
+                "overflow": "hidden",
+                "textAlign": "center"
+              },
+              "text": "IG3",
+              "textStyle": {
+                "color": "#242E30",
+                "fontSize": 10,
+                "fontWeight": "700"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "custom": {
+              "en": false,
+              "fault": false,
+              "iso": true
+            },
+            "meta": {
+              "name": "IG4"
+            },
+            "position": {
+              "basis": "30px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "custom.en": {
+                "binding": {
+                  "config": {
+                    "expression": "if({view.custom.igCount} \u003e\u003d 4,\r\n\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG4/GroupTags/GroupEn\"), false),\r\n\tfalse\r\n)"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "custom.fault": {
+                "binding": {
+                  "config": {
+                    "expression": "if({view.custom.igCount} \u003e\u003d 4,\r\n\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG4/GroupTags/GroupFaultActive\"), false),\r\n\tfalse\r\n)"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "custom.iso": {
+                "binding": {
+                  "config": {
+                    "expression": "if({view.custom.igCount} \u003e\u003d 4,\r\n\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG4/GroupTags/GroupIsolated\"), false),\r\n\tfalse\r\n)"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "meta.visible": {
+                "binding": {
+                  "config": {
+                    "expression": "{view.custom.igCount} \u003e\u003d 4"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "props.style.backgroundColor": {
+                "binding": {
+                  "config": {
+                    "expression": "if({this.custom.fault}, \"#C02026\",\r\n\tif({this.custom.en}, \"#36664A\",\r\n\t\tif({this.custom.iso}, \"#EBC452\", \"#DC7323\")\r\n\t)\r\n)"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "props.textStyle.color": {
+                "binding": {
+                  "config": {
+                    "expression": "if(!{this.custom.fault} \u0026\u0026 !{this.custom.en} \u0026\u0026 {this.custom.iso}, \"#242E30\", \"#F3EEE7\")"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              }
+            },
+            "props": {
+              "style": {
+                "backgroundColor": "#EBC452",
+                "borderRadius": "4px",
+                "height": "20px",
+                "lineHeight": "20px",
+                "overflow": "hidden",
+                "textAlign": "center"
+              },
+              "text": "IG4",
+              "textStyle": {
+                "color": "#242E30",
+                "fontSize": 10,
+                "fontWeight": "700"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "custom": {
+              "en": false,
+              "fault": false,
+              "iso": false
+            },
+            "meta": {
+              "name": "IG5",
+              "visible": false
+            },
+            "position": {
+              "basis": "30px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "custom.en": {
+                "binding": {
+                  "config": {
+                    "expression": "if({view.custom.igCount} \u003e\u003d 5,\r\n\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG5/GroupTags/GroupEn\"), false),\r\n\tfalse\r\n)"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "custom.fault": {
+                "binding": {
+                  "config": {
+                    "expression": "if({view.custom.igCount} \u003e\u003d 5,\r\n\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG5/GroupTags/GroupFaultActive\"), false),\r\n\tfalse\r\n)"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "custom.iso": {
+                "binding": {
+                  "config": {
+                    "expression": "if({view.custom.igCount} \u003e\u003d 5,\r\n\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG5/GroupTags/GroupIsolated\"), false),\r\n\tfalse\r\n)"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "meta.visible": {
+                "binding": {
+                  "config": {
+                    "expression": "{view.custom.igCount} \u003e\u003d 5"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "props.style.backgroundColor": {
+                "binding": {
+                  "config": {
+                    "expression": "if({this.custom.fault}, \"#C02026\",\r\n\tif({this.custom.en}, \"#36664A\",\r\n\t\tif({this.custom.iso}, \"#EBC452\", \"#DC7323\")\r\n\t)\r\n)"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "props.textStyle.color": {
+                "binding": {
+                  "config": {
+                    "expression": "if(!{this.custom.fault} \u0026\u0026 !{this.custom.en} \u0026\u0026 {this.custom.iso}, \"#242E30\", \"#F3EEE7\")"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              }
+            },
+            "props": {
+              "style": {
+                "backgroundColor": "#DC7323",
+                "borderRadius": "4px",
+                "height": "20px",
+                "lineHeight": "20px",
+                "overflow": "hidden",
+                "textAlign": "center"
+              },
+              "text": "IG5",
+              "textStyle": {
+                "color": "#F3EEE7",
+                "fontSize": 10,
+                "fontWeight": "700"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "custom": {
+              "en": false,
+              "fault": false,
+              "iso": false
+            },
+            "meta": {
+              "name": "IG6",
+              "visible": false
+            },
+            "position": {
+              "basis": "30px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "custom.en": {
+                "binding": {
+                  "config": {
+                    "expression": "if({view.custom.igCount} \u003e\u003d 6,\r\n\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG6/GroupTags/GroupEn\"), false),\r\n\tfalse\r\n)"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "custom.fault": {
+                "binding": {
+                  "config": {
+                    "expression": "if({view.custom.igCount} \u003e\u003d 6,\r\n\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG6/GroupTags/GroupFaultActive\"), false),\r\n\tfalse\r\n)"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "custom.iso": {
+                "binding": {
+                  "config": {
+                    "expression": "if({view.custom.igCount} \u003e\u003d 6,\r\n\tcoalesce(tag({view.custom.prefix} + {view.params.Area} + \"_IG6/GroupTags/GroupIsolated\"), false),\r\n\tfalse\r\n)"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "meta.visible": {
+                "binding": {
+                  "config": {
+                    "expression": "{view.custom.igCount} \u003e\u003d 6"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "props.style.backgroundColor": {
+                "binding": {
+                  "config": {
+                    "expression": "if({this.custom.fault}, \"#C02026\",\r\n\tif({this.custom.en}, \"#36664A\",\r\n\t\tif({this.custom.iso}, \"#EBC452\", \"#DC7323\")\r\n\t)\r\n)"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "props.textStyle.color": {
+                "binding": {
+                  "config": {
+                    "expression": "if(!{this.custom.fault} \u0026\u0026 !{this.custom.en} \u0026\u0026 {this.custom.iso}, \"#242E30\", \"#F3EEE7\")"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              }
+            },
+            "props": {
+              "style": {
+                "backgroundColor": "#DC7323",
+                "borderRadius": "4px",
+                "height": "20px",
+                "lineHeight": "20px",
+                "overflow": "hidden",
+                "textAlign": "center"
+              },
+              "text": "IG6",
+              "textStyle": {
+                "color": "#F3EEE7",
+                "fontSize": 10,
+                "fontWeight": "700"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "ChipRow"
+        },
+        "position": {
+          "basis": "24px",
+          "shrink": 0
+        },
+        "props": {
+          "alignItems": "center",
+          "style": {
+            "gap": "6px",
+            "overflow": "hidden"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "dot"
+                },
+                "position": {
+                  "basis": "8px",
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.style.backgroundColor": {
+                    "binding": {
+                      "config": {
+                        "expression": "if({view.custom.estopsOk}, \"#0A733A\", \"#C02026\")"
+                      },
+                      "type": "expr"
+                    },
+                    "persistent": true
+                  }
+                },
+                "props": {
+                  "style": {
+                    "backgroundColor": "#0A733A",
+                    "borderRadius": "50%",
+                    "height": "8px",
+                    "width": "8px"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "cap"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "lineHeight": "12px",
+                    "overflow": "hidden",
+                    "textOverflow": "ellipsis",
+                    "whiteSpace": "nowrap"
+                  },
+                  "text": "E-STOPS",
+                  "textStyle": {
+                    "color": "#C2C7C7",
+                    "fontSize": 8,
+                    "fontWeight": "600",
+                    "letterSpacing": "0.4px"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "Estops"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "alignItems": "center",
+              "justify": "center",
+              "style": {
+                "gap": "4px",
+                "minWidth": "0px",
+                "overflow": "hidden"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "dot"
+                },
+                "position": {
+                  "basis": "8px",
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.style.backgroundColor": {
+                    "binding": {
+                      "config": {
+                        "expression": "if({view.custom.gatesOk}, \"#0A733A\", \"#C02026\")"
+                      },
+                      "type": "expr"
+                    },
+                    "persistent": true
+                  }
+                },
+                "props": {
+                  "style": {
+                    "backgroundColor": "#C02026",
+                    "borderRadius": "50%",
+                    "height": "8px",
+                    "width": "8px"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "cap"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "lineHeight": "12px",
+                    "overflow": "hidden",
+                    "textOverflow": "ellipsis",
+                    "whiteSpace": "nowrap"
+                  },
+                  "text": "GATES",
+                  "textStyle": {
+                    "color": "#C2C7C7",
+                    "fontSize": 8,
+                    "fontWeight": "600",
+                    "letterSpacing": "0.4px"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "Gates"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "alignItems": "center",
+              "justify": "center",
+              "style": {
+                "gap": "4px",
+                "minWidth": "0px",
+                "overflow": "hidden"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "dot"
+                },
+                "position": {
+                  "basis": "8px",
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.style.backgroundColor": {
+                    "binding": {
+                      "config": {
+                        "expression": "if({view.custom.isolatorsOk}, \"#0A733A\", \"#C02026\")"
+                      },
+                      "type": "expr"
+                    },
+                    "persistent": true
+                  }
+                },
+                "props": {
+                  "style": {
+                    "backgroundColor": "#C02026",
+                    "borderRadius": "50%",
+                    "height": "8px",
+                    "width": "8px"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "cap"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "lineHeight": "12px",
+                    "overflow": "hidden",
+                    "textOverflow": "ellipsis",
+                    "whiteSpace": "nowrap"
+                  },
+                  "text": "ISOLATORS",
+                  "textStyle": {
+                    "color": "#C2C7C7",
+                    "fontSize": 8,
+                    "fontWeight": "600",
+                    "letterSpacing": "0.4px"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "Isolators"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "alignItems": "center",
+              "justify": "center",
+              "style": {
+                "gap": "4px",
+                "minWidth": "0px",
+                "overflow": "hidden"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "dot"
+                },
+                "position": {
+                  "basis": "8px",
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.style.backgroundColor": {
+                    "binding": {
+                      "config": {
+                        "expression": "if({view.custom.standstillsOk}, \"#0A733A\", if({view.custom.standstillBad}, \"#C02026\", \"#5CA6C4\"))"
+                      },
+                      "type": "expr"
+                    },
+                    "persistent": true
+                  }
+                },
+                "props": {
+                  "style": {
+                    "backgroundColor": "#C02026",
+                    "borderRadius": "50%",
+                    "height": "8px",
+                    "width": "8px"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "cap"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "if({view.custom.standstillsOk}, \"STANDSTILL\", if({view.custom.standstillBad}, \"NOT STOPPED\", \"RUNNING\"))"
+                      },
+                      "type": "expr"
+                    },
+                    "persistent": true
+                  }
+                },
+                "props": {
+                  "style": {
+                    "lineHeight": "12px",
+                    "overflow": "hidden",
+                    "textOverflow": "ellipsis",
+                    "whiteSpace": "nowrap"
+                  },
+                  "text": "NOT STOPPED",
+                  "textStyle": {
+                    "color": "#C2C7C7",
+                    "fontSize": 8,
+                    "fontWeight": "600",
+                    "letterSpacing": "0.4px"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "Standstills",
+              "tooltip": {
+                "enabled": true,
+                "text": "NOT at standstill while a group is de-energised - still turning, or check the standstill monitor"
+              },
+              "visible": false
+            },
+            "position": {
+              "grow": 1
+            },
+            "propConfig": {
+              "meta.tooltip.text": {
+                "binding": {
+                  "config": {
+                    "expression": "if({view.params.Area} \u003d \"HOG\",\r\n\tif({view.custom.standstillsOk}, \"Hogger at standstill - both VSD standstill monitors (HOG_SS_01, HOG_SS_02)\",\r\n\t\tif({view.custom.standstillBad}, \"Hogger NOT at standstill while the HOG Area group is de-energised - still running down. The lid pump stays off until both monitors read standstill\",\r\n\t\t\t\"Hogger running - not at standstill. Normal while the HOG Area group is energised\")),\r\nif({view.custom.standstillsOk}, \"At standstill - every monitored machine has stopped\", if({view.custom.standstillBad}, \"NOT at standstill while a group is de-energised - still turning, or check the standstill monitor\", \"Running - not at standstill. Normal while the group is energised\"))\r\n)"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "meta.visible": {
+                "binding": {
+                  "config": {
+                    "expression": "{view.params.Area} \u003d \"COS\" || {view.params.Area} \u003d \"CHP\" || {view.params.Area} \u003d \"HOG\""
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              }
+            },
+            "props": {
+              "alignItems": "center",
+              "justify": "center",
+              "style": {
+                "gap": "4px",
+                "minWidth": "0px",
+                "overflow": "hidden"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "RollupRow"
+        },
+        "position": {
+          "basis": "18px",
+          "shrink": 0
+        },
+        "props": {
+          "alignItems": "center",
+          "style": {
+            "gap": "2px",
+            "marginTop": "2px",
+            "overflow": "hidden"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Text"
+                },
+                "position": {
+                  "basis": "0px",
+                  "grow": 1,
+                  "shrink": 1
+                },
+                "propConfig": {
+                  "props.style.color": {
+                    "binding": {
+                      "config": {
+                        "expression": "try({view.custom.reset.cardFg}, \u0027#F6E6B8\u0027)"
+                      },
+                      "type": "expr"
+                    }
+                  },
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "try({view.custom.reset.text}, \u0027RESET ALL IGs\u0027)"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "fontSize": "11px",
+                    "fontWeight": 700,
+                    "letterSpacing": "0.5px",
+                    "lineHeight": "32px",
+                    "overflow": "hidden",
+                    "textAlign": "center",
+                    "textOverflow": "ellipsis",
+                    "whiteSpace": "nowrap"
+                  },
+                  "text": "RESET ALL IGs"
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "script": "\t# 1.5.0: one press - booth.safetyreset holds the area\u0027s HMI reset 3.5 s (clears a safety fault), waits out the\n\t# PLC\u0027s fault-reset pulse, then taps it 0.2 s (resets the groups). Runs on the gateway; a second press while it\n\t# runs is refused. Replaces the press-and-hold button (DDB: monitoring only - press() does nothing).\n\tbooth.safetyreset.press(self.view.params.Area, self.session.props.auth.user.userName,\n\t\t\u0027Diag view card %s\u0027 % self.page.props.path)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "ResetButton",
+              "tooltip": {
+                "enabled": true
+              }
+            },
+            "position": {
+              "basis": "120px",
+              "grow": 1
+            },
+            "propConfig": {
+              "meta.tooltip.text": {
+                "binding": {
+                  "config": {
+                    "expression": "try({view.custom.reset.tip}, \u0027\u0027)"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.style.backgroundColor": {
+                "binding": {
+                  "config": {
+                    "expression": "try({view.custom.reset.cardBg}, \u0027\u0027)"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.style.classes": {
+                "binding": {
+                  "config": {
+                    "expression": "try({view.custom.reset.cls}, \u0027gbtn gbtn-gold\u0027)"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.style.cursor": {
+                "binding": {
+                  "config": {
+                    "expression": "if(try({view.custom.reset.can}, false), \u0027pointer\u0027, \u0027default\u0027)"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "alignItems": "center",
+              "direction": "row",
+              "justify": "center",
+              "style": {
+                "borderColor": "rgba(255,255,255,0.14)",
+                "borderRadius": "12px",
+                "borderStyle": "solid",
+                "borderWidth": "1px",
+                "boxSizing": "border-box",
+                "classes": "gbtn gbtn-gold",
+                "cursor": "pointer",
+                "height": "34px",
+                "overflow": "hidden",
+                "padding": "0px 8px"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "icon"
+                },
+                "position": {
+                  "basis": "18px",
+                  "shrink": 0
+                },
+                "props": {
+                  "color": "#5CA6C4",
+                  "path": "material/open_in_new",
+                  "style": {
+                    "fontSize": 16
+                  }
+                },
+                "type": "ia.display.icon"
+              }
+            ],
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "script": "\t# 1.5.0: the Safety Diagnostics popup on this area (was: navigate to the old /Safety/\u003carea\u003e page)\n\tbooth.safety.openDiag(self.view.params.Area)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "OpenButton",
+              "tooltip": {
+                "enabled": true
+              }
+            },
+            "position": {
+              "basis": "40px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "meta.tooltip.text": {
+                "binding": {
+                  "config": {
+                    "expression": "\u0027Safety Diagnostics - \u0027 + {view.params.Area}"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "alignItems": "center",
+              "justify": "center",
+              "style": {
+                "classes": "gbtn gbtn-water",
+                "cursor": "pointer",
+                "height": "34px"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "Footer"
+        },
+        "position": {
+          "grow": 1
+        },
+        "props": {
+          "alignItems": "end",
+          "style": {
+            "gap": "8px"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "AreaSafetyCard_v1_5_0"
+    },
+    "propConfig": {
+      "props.style.borderLeftColor": {
+        "binding": {
+          "config": {
+            "expression": "if({view.custom.faultCount} \u003e 0, \"#C02026\",\r\n\tif({view.custom.deenCount} \u003e 0, \"#DC7323\",\r\n\t\tif({view.custom.isoCount} \u003e 0, \"#EBC452\", \"#0A733A\")\r\n\t)\r\n)"
+          },
+          "type": "expr"
+        },
+        "persistent": true
+      }
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "backgroundColor": "rgba(36,46,48,0.85)",
+        "borderBottomColor": "rgba(92,166,196,0.25)",
+        "borderBottomStyle": "solid",
+        "borderBottomWidth": 1,
+        "borderLeftColor": "#EBC452",
+        "borderLeftStyle": "solid",
+        "borderLeftWidth": 4,
+        "borderRadius": "10px",
+        "borderRightColor": "rgba(92,166,196,0.25)",
+        "borderRightStyle": "solid",
+        "borderRightWidth": 1,
+        "borderTopColor": "rgba(92,166,196,0.25)",
+        "borderTopStyle": "solid",
+        "borderTopWidth": 1,
+        "gap": "8px",
+        "overflow": "hidden",
+        "padding": "10px 12px 10px 12px"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}
