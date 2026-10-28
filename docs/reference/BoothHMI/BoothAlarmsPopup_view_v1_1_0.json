@@ -1,0 +1,1704 @@
+{
+  "custom": {
+    "count": 39,
+    "hist": {
+      "info": "",
+      "infoColor": "#5F696B",
+      "rows": []
+    },
+    "hours": 24,
+    "mode": "all",
+    "search": "",
+    "tab": "active",
+    "version": "1.1.0"
+  },
+  "params": {
+    "filter": "SDB,HOG",
+    "title": "DEBARKER"
+  },
+  "propConfig": {
+    "custom.count": {
+      "binding": {
+        "config": {
+          "expression": "coalesce(runScript(\u0027booth.ui.alarmCount\u0027, 5000, {view.params.filter}), -1)"
+        },
+        "type": "expr"
+      },
+      "persistent": true
+    },
+    "custom.hist": {
+      "binding": {
+        "config": {
+          "struct": {
+            "f": "{view.params.filter}",
+            "h": "{view.custom.hours}",
+            "m": "{view.custom.mode}",
+            "s": "{view.custom.search}",
+            "t": "now(15000)",
+            "tab": "{view.custom.tab}"
+          },
+          "waitOnAll": true
+        },
+        "transforms": [
+          {
+            "code": "\t# HISTORY tab (1.1.0): forensics.alarmHistory.rows(filter, hours, mode, search) - read only while the tab is open,\n\t# then every 15 s and on every chip or search change. 30 days kept (shared.purge).\n\tif str(value.tab or \u0027\u0027) !\u003d \u0027history\u0027:\n\t\treturn {\u0027rows\u0027: [], \u0027info\u0027: \u0027\u0027, \u0027infoColor\u0027: \u0027#5F696B\u0027}\n\ttry:\n\t\treturn forensics.alarmHistory.rows(value.f, value.h, value.m, value.s)\n\texcept:\n\t\treturn {\u0027rows\u0027: [], \u0027info\u0027: \u0027the history needs forensics.alarmHistory 1.0.0\u0027, \u0027infoColor\u0027: \u0027#C02026\u0027}\n",
+            "type": "script"
+          }
+        ],
+        "type": "expr-struct"
+      },
+      "persistent": true
+    },
+    "custom.hours": {
+      "persistent": true
+    },
+    "custom.mode": {
+      "persistent": true
+    },
+    "custom.search": {
+      "persistent": true
+    },
+    "custom.tab": {
+      "persistent": true
+    },
+    "custom.version": {
+      "persistent": true
+    },
+    "params.filter": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.title": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 580,
+      "width": 1100
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Title"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "expression": "\"ALARMS - \" + {view.params.title}"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "color": "#5F696B",
+                "fontSize": "12px",
+                "fontWeight": 700,
+                "letterSpacing": "0.1em",
+                "lineHeight": "20px",
+                "whiteSpace": "nowrap"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Badge"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "position.display": {
+                "binding": {
+                  "config": {
+                    "expression": "coalesce(try({view.custom.count} \u003e\u003d 0, false), false)"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.style.backgroundColor": {
+                "binding": {
+                  "config": {
+                    "expression": "if({view.custom.count} \u003e 0, \u0027#C02026\u0027, \u0027#EEF1F1\u0027)"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.style.color": {
+                "binding": {
+                  "config": {
+                    "expression": "if({view.custom.count} \u003e 0, \u0027#FFFFFF\u0027, \u0027#4A5558\u0027)"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "expression": "if({view.custom.count} \u003e\u003d 0, toStr({view.custom.count}) + \u0027 active\u0027, \u0027\u0027)"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "borderRadius": "10px",
+                "fontSize": "11px",
+                "fontWeight": 700,
+                "lineHeight": "18px",
+                "padding": "0px 8px",
+                "whiteSpace": "nowrap"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Text"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.style.color": {
+                    "binding": {
+                      "config": {
+                        "expression": "if(coalesce({view.custom.tab}, \u0027active\u0027) !\u003d \u0027history\u0027, \u0027#FFFFFF\u0027, \u0027#242E30\u0027)"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "fontSize": "12px",
+                    "fontWeight": 700,
+                    "lineHeight": "26px",
+                    "whiteSpace": "nowrap"
+                  },
+                  "text": "ACTIVE"
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "script": "\tself.view.custom.tab \u003d \u0027active\u0027"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "TabActive"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.style.backgroundColor": {
+                "binding": {
+                  "config": {
+                    "expression": "if(coalesce({view.custom.tab}, \u0027active\u0027) !\u003d \u0027history\u0027, \u0027#242E30\u0027, \u0027#FFFFFF\u0027)"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.style.borderColor": {
+                "binding": {
+                  "config": {
+                    "expression": "if(coalesce({view.custom.tab}, \u0027active\u0027) !\u003d \u0027history\u0027, \u0027#242E30\u0027, \u0027#D5DADA\u0027)"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "alignItems": "center",
+              "direction": "row",
+              "justify": "center",
+              "style": {
+                "borderRadius": "6px",
+                "borderStyle": "solid",
+                "borderWidth": "1px",
+                "boxSizing": "border-box",
+                "cursor": "pointer",
+                "height": "28px",
+                "overflow": "hidden",
+                "padding": "0px 12px"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Text"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.style.color": {
+                    "binding": {
+                      "config": {
+                        "expression": "if(coalesce({view.custom.tab}, \u0027active\u0027) \u003d \u0027history\u0027, \u0027#FFFFFF\u0027, \u0027#242E30\u0027)"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "fontSize": "12px",
+                    "fontWeight": 700,
+                    "lineHeight": "26px",
+                    "whiteSpace": "nowrap"
+                  },
+                  "text": "HISTORY - 30 DAYS"
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "script": "\tself.view.custom.tab \u003d \u0027history\u0027"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "TabHistory"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.style.backgroundColor": {
+                "binding": {
+                  "config": {
+                    "expression": "if(coalesce({view.custom.tab}, \u0027active\u0027) \u003d \u0027history\u0027, \u0027#242E30\u0027, \u0027#FFFFFF\u0027)"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.style.borderColor": {
+                "binding": {
+                  "config": {
+                    "expression": "if(coalesce({view.custom.tab}, \u0027active\u0027) \u003d \u0027history\u0027, \u0027#242E30\u0027, \u0027#D5DADA\u0027)"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "alignItems": "center",
+              "direction": "row",
+              "justify": "center",
+              "style": {
+                "borderRadius": "6px",
+                "borderStyle": "solid",
+                "borderWidth": "1px",
+                "boxSizing": "border-box",
+                "cursor": "pointer",
+                "height": "28px",
+                "overflow": "hidden",
+                "padding": "0px 12px"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "meta": {
+              "name": "Spacer"
+            },
+            "position": {
+              "basis": "0px",
+              "grow": 1
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "meta": {
+              "name": "Hint"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "color": "#5F696B",
+                "fontSize": "11.5px",
+                "fontWeight": 400,
+                "lineHeight": "20px",
+                "whiteSpace": "nowrap"
+              },
+              "text": "Tap outside to close"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "Head"
+        },
+        "position": {
+          "basis": "28px",
+          "shrink": 0
+        },
+        "props": {
+          "alignItems": "center",
+          "style": {
+            "gap": "10px",
+            "overflow": "hidden"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "AlarmStatusTable"
+        },
+        "position": {
+          "basis": "0px",
+          "grow": 1
+        },
+        "propConfig": {
+          "position.display": {
+            "binding": {
+              "config": {
+                "expression": "coalesce({view.custom.tab}, \u0027active\u0027) !\u003d \u0027history\u0027"
+              },
+              "type": "expr"
+            }
+          },
+          "props.filters.active.conditions.displayPath": {
+            "binding": {
+              "config": {
+                "path": "view.params.filter"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "activeSortOrder": [
+            "activeTime"
+          ],
+          "columns": {
+            "active": {
+              "activeTime": {
+                "sort": "descending",
+                "strictWidth": true,
+                "width": 170
+              },
+              "displayPath": {
+                "enabled": false,
+                "order": 3,
+                "width": 150
+              },
+              "label": {
+                "enabled": true,
+                "order": 1,
+                "width": 400
+              },
+              "name": {
+                "enabled": false,
+                "order": 5,
+                "width": 150
+              },
+              "priority": {
+                "enabled": false,
+                "sort": "none"
+              },
+              "source": {
+                "enabled": false,
+                "width": 250
+              },
+              "state": {
+                "enabled": false
+              }
+            }
+          },
+          "dateFormat": "DD/MM HH:mm:ss",
+          "dragOrderable": false,
+          "enableShelve": false,
+          "filters": {
+            "active": {
+              "conditions": {},
+              "states": {
+                "clearUnacked": false
+              }
+            }
+          },
+          "pager": {
+            "hide": true,
+            "initialOption": 250,
+            "options": [
+              10,
+              25,
+              50,
+              100,
+              250
+            ]
+          },
+          "refreshRate": 1000,
+          "rowStyles": {
+            "activeAcked": {
+              "base": {
+                "backgroundColor": "#FDF4F4",
+                "color": "#6E1C1F",
+                "fontSize": "15px"
+              },
+              "priorities": {
+                "critical": {
+                  "backgroundColor": "#FDF4F4",
+                  "color": "#6E1C1F"
+                },
+                "diagnostic": {
+                  "backgroundColor": "#F6F7F7",
+                  "color": "#4A5558"
+                },
+                "high": {
+                  "backgroundColor": "#FDF4F4",
+                  "color": "#6E1C1F"
+                },
+                "low": {
+                  "backgroundColor": "#FFFAE6",
+                  "color": "#5C4A00"
+                },
+                "medium": {
+                  "backgroundColor": "#FEF3EA",
+                  "color": "#7A3A0A"
+                }
+              }
+            },
+            "activeUnacked": {
+              "base": {
+                "backgroundColor": "#F6D5D6",
+                "color": "#8E1A1E",
+                "fontSize": "15px",
+                "fontWeight": 600
+              },
+              "priorities": {
+                "critical": {
+                  "backgroundColor": "#F6D5D6",
+                  "color": "#8E1A1E"
+                },
+                "diagnostic": {
+                  "backgroundColor": "#EEF1F1",
+                  "color": "#4A5558"
+                },
+                "high": {
+                  "backgroundColor": "#F6D5D6",
+                  "color": "#8E1A1E"
+                },
+                "low": {
+                  "backgroundColor": "#FFF3C4",
+                  "color": "#5C4A00"
+                },
+                "medium": {
+                  "backgroundColor": "#FCE3CF",
+                  "color": "#7A3A0A"
+                }
+              }
+            },
+            "clearAcked": {
+              "base": {
+                "backgroundColor": "#FFFFFF",
+                "color": "#4A5558",
+                "fontSize": "15px"
+              },
+              "priorities": {
+                "critical": {
+                  "backgroundColor": "#FFFFFF",
+                  "color": "#4A5558"
+                },
+                "diagnostic": {
+                  "color": "#4A5558"
+                },
+                "high": {
+                  "backgroundColor": "#FFFFFF",
+                  "color": "#4A5558"
+                },
+                "low": {
+                  "backgroundColor": "#FFFFFF",
+                  "color": "#4A5558"
+                },
+                "medium": {
+                  "backgroundColor": "#FFFFFF",
+                  "color": "#4A5558"
+                }
+              }
+            },
+            "clearUnacked": {
+              "base": {
+                "backgroundColor": "#FFFFFF",
+                "color": "#4A5558",
+                "fontSize": "15px"
+              },
+              "priorities": {
+                "critical": {
+                  "backgroundColor": "#FFFFFF",
+                  "color": "#4A5558"
+                },
+                "diagnostic": {
+                  "color": "#4A5558"
+                },
+                "high": {
+                  "backgroundColor": "#FFFFFF",
+                  "color": "#4A5558"
+                },
+                "low": {
+                  "backgroundColor": "#FFFFFF",
+                  "color": "#4A5558"
+                },
+                "medium": {
+                  "backgroundColor": "#FFFFFF",
+                  "color": "#4A5558"
+                }
+              }
+            }
+          },
+          "selection": {
+            "active": {
+              "mode": "none"
+            },
+            "shelved": {
+              "mode": "none"
+            }
+          },
+          "shelvingTimes": [
+            0,
+            900,
+            1800,
+            3600,
+            7200,
+            14400
+          ],
+          "style": {
+            "borderStyle": "none",
+            "fontSize": "15px"
+          },
+          "toolbar": {
+            "enablePreFilters": false,
+            "enableShelvedTab": false,
+            "enabled": false
+          }
+        },
+        "type": "ia.display.alarmstatustable"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "RangeCap"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "color": "#80878A",
+                    "fontSize": "10px",
+                    "fontWeight": 700,
+                    "letterSpacing": "0.05em",
+                    "lineHeight": "28px",
+                    "whiteSpace": "nowrap"
+                  },
+                  "text": "RANGE"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Text"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "propConfig": {
+                      "props.style.color": {
+                        "binding": {
+                          "config": {
+                            "expression": "if(coalesce({view.custom.hours}, 24) \u003d 1, \u0027#FFFFFF\u0027, \u0027#242E30\u0027)"
+                          },
+                          "type": "expr"
+                        }
+                      }
+                    },
+                    "props": {
+                      "style": {
+                        "fontSize": "12px",
+                        "fontWeight": 700,
+                        "lineHeight": "26px",
+                        "whiteSpace": "nowrap"
+                      },
+                      "text": "1 H"
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "events": {
+                  "dom": {
+                    "onClick": {
+                      "config": {
+                        "script": "\tself.view.custom.hours \u003d 1"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "R1"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.style.backgroundColor": {
+                    "binding": {
+                      "config": {
+                        "expression": "if(coalesce({view.custom.hours}, 24) \u003d 1, \u0027#242E30\u0027, \u0027#FFFFFF\u0027)"
+                      },
+                      "type": "expr"
+                    }
+                  },
+                  "props.style.borderColor": {
+                    "binding": {
+                      "config": {
+                        "expression": "if(coalesce({view.custom.hours}, 24) \u003d 1, \u0027#242E30\u0027, \u0027#D5DADA\u0027)"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "alignItems": "center",
+                  "direction": "row",
+                  "justify": "center",
+                  "style": {
+                    "borderRadius": "6px",
+                    "borderStyle": "solid",
+                    "borderWidth": "1px",
+                    "boxSizing": "border-box",
+                    "cursor": "pointer",
+                    "height": "28px",
+                    "overflow": "hidden",
+                    "padding": "0px 12px"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Text"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "propConfig": {
+                      "props.style.color": {
+                        "binding": {
+                          "config": {
+                            "expression": "if(coalesce({view.custom.hours}, 24) \u003d 8, \u0027#FFFFFF\u0027, \u0027#242E30\u0027)"
+                          },
+                          "type": "expr"
+                        }
+                      }
+                    },
+                    "props": {
+                      "style": {
+                        "fontSize": "12px",
+                        "fontWeight": 700,
+                        "lineHeight": "26px",
+                        "whiteSpace": "nowrap"
+                      },
+                      "text": "8 H"
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "events": {
+                  "dom": {
+                    "onClick": {
+                      "config": {
+                        "script": "\tself.view.custom.hours \u003d 8"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "R8"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.style.backgroundColor": {
+                    "binding": {
+                      "config": {
+                        "expression": "if(coalesce({view.custom.hours}, 24) \u003d 8, \u0027#242E30\u0027, \u0027#FFFFFF\u0027)"
+                      },
+                      "type": "expr"
+                    }
+                  },
+                  "props.style.borderColor": {
+                    "binding": {
+                      "config": {
+                        "expression": "if(coalesce({view.custom.hours}, 24) \u003d 8, \u0027#242E30\u0027, \u0027#D5DADA\u0027)"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "alignItems": "center",
+                  "direction": "row",
+                  "justify": "center",
+                  "style": {
+                    "borderRadius": "6px",
+                    "borderStyle": "solid",
+                    "borderWidth": "1px",
+                    "boxSizing": "border-box",
+                    "cursor": "pointer",
+                    "height": "28px",
+                    "overflow": "hidden",
+                    "padding": "0px 12px"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Text"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "propConfig": {
+                      "props.style.color": {
+                        "binding": {
+                          "config": {
+                            "expression": "if(coalesce({view.custom.hours}, 24) \u003d 24, \u0027#FFFFFF\u0027, \u0027#242E30\u0027)"
+                          },
+                          "type": "expr"
+                        }
+                      }
+                    },
+                    "props": {
+                      "style": {
+                        "fontSize": "12px",
+                        "fontWeight": 700,
+                        "lineHeight": "26px",
+                        "whiteSpace": "nowrap"
+                      },
+                      "text": "24 H"
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "events": {
+                  "dom": {
+                    "onClick": {
+                      "config": {
+                        "script": "\tself.view.custom.hours \u003d 24"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "R24"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.style.backgroundColor": {
+                    "binding": {
+                      "config": {
+                        "expression": "if(coalesce({view.custom.hours}, 24) \u003d 24, \u0027#242E30\u0027, \u0027#FFFFFF\u0027)"
+                      },
+                      "type": "expr"
+                    }
+                  },
+                  "props.style.borderColor": {
+                    "binding": {
+                      "config": {
+                        "expression": "if(coalesce({view.custom.hours}, 24) \u003d 24, \u0027#242E30\u0027, \u0027#D5DADA\u0027)"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "alignItems": "center",
+                  "direction": "row",
+                  "justify": "center",
+                  "style": {
+                    "borderRadius": "6px",
+                    "borderStyle": "solid",
+                    "borderWidth": "1px",
+                    "boxSizing": "border-box",
+                    "cursor": "pointer",
+                    "height": "28px",
+                    "overflow": "hidden",
+                    "padding": "0px 12px"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Text"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "propConfig": {
+                      "props.style.color": {
+                        "binding": {
+                          "config": {
+                            "expression": "if(coalesce({view.custom.hours}, 24) \u003d 168, \u0027#FFFFFF\u0027, \u0027#242E30\u0027)"
+                          },
+                          "type": "expr"
+                        }
+                      }
+                    },
+                    "props": {
+                      "style": {
+                        "fontSize": "12px",
+                        "fontWeight": 700,
+                        "lineHeight": "26px",
+                        "whiteSpace": "nowrap"
+                      },
+                      "text": "7 DAYS"
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "events": {
+                  "dom": {
+                    "onClick": {
+                      "config": {
+                        "script": "\tself.view.custom.hours \u003d 168"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "R168"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.style.backgroundColor": {
+                    "binding": {
+                      "config": {
+                        "expression": "if(coalesce({view.custom.hours}, 24) \u003d 168, \u0027#242E30\u0027, \u0027#FFFFFF\u0027)"
+                      },
+                      "type": "expr"
+                    }
+                  },
+                  "props.style.borderColor": {
+                    "binding": {
+                      "config": {
+                        "expression": "if(coalesce({view.custom.hours}, 24) \u003d 168, \u0027#242E30\u0027, \u0027#D5DADA\u0027)"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "alignItems": "center",
+                  "direction": "row",
+                  "justify": "center",
+                  "style": {
+                    "borderRadius": "6px",
+                    "borderStyle": "solid",
+                    "borderWidth": "1px",
+                    "boxSizing": "border-box",
+                    "cursor": "pointer",
+                    "height": "28px",
+                    "overflow": "hidden",
+                    "padding": "0px 12px"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Text"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "propConfig": {
+                      "props.style.color": {
+                        "binding": {
+                          "config": {
+                            "expression": "if(coalesce({view.custom.hours}, 24) \u003d 720, \u0027#FFFFFF\u0027, \u0027#242E30\u0027)"
+                          },
+                          "type": "expr"
+                        }
+                      }
+                    },
+                    "props": {
+                      "style": {
+                        "fontSize": "12px",
+                        "fontWeight": 700,
+                        "lineHeight": "26px",
+                        "whiteSpace": "nowrap"
+                      },
+                      "text": "30 DAYS"
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "events": {
+                  "dom": {
+                    "onClick": {
+                      "config": {
+                        "script": "\tself.view.custom.hours \u003d 720"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "R720"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.style.backgroundColor": {
+                    "binding": {
+                      "config": {
+                        "expression": "if(coalesce({view.custom.hours}, 24) \u003d 720, \u0027#242E30\u0027, \u0027#FFFFFF\u0027)"
+                      },
+                      "type": "expr"
+                    }
+                  },
+                  "props.style.borderColor": {
+                    "binding": {
+                      "config": {
+                        "expression": "if(coalesce({view.custom.hours}, 24) \u003d 720, \u0027#242E30\u0027, \u0027#D5DADA\u0027)"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "alignItems": "center",
+                  "direction": "row",
+                  "justify": "center",
+                  "style": {
+                    "borderRadius": "6px",
+                    "borderStyle": "solid",
+                    "borderWidth": "1px",
+                    "boxSizing": "border-box",
+                    "cursor": "pointer",
+                    "height": "28px",
+                    "overflow": "hidden",
+                    "padding": "0px 12px"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "meta": {
+                  "name": "Gap"
+                },
+                "position": {
+                  "basis": "10px",
+                  "shrink": 0
+                },
+                "props": {},
+                "type": "ia.container.flex"
+              },
+              {
+                "meta": {
+                  "name": "ShowCap"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "color": "#80878A",
+                    "fontSize": "10px",
+                    "fontWeight": 700,
+                    "letterSpacing": "0.05em",
+                    "lineHeight": "28px",
+                    "whiteSpace": "nowrap"
+                  },
+                  "text": "SHOW"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Text"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "propConfig": {
+                      "props.style.color": {
+                        "binding": {
+                          "config": {
+                            "expression": "if(coalesce({view.custom.mode}, \u0027all\u0027) \u003d \u0027all\u0027, \u0027#FFFFFF\u0027, \u0027#242E30\u0027)"
+                          },
+                          "type": "expr"
+                        }
+                      }
+                    },
+                    "props": {
+                      "style": {
+                        "fontSize": "12px",
+                        "fontWeight": 700,
+                        "lineHeight": "26px",
+                        "whiteSpace": "nowrap"
+                      },
+                      "text": "ALL"
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "events": {
+                  "dom": {
+                    "onClick": {
+                      "config": {
+                        "script": "\tself.view.custom.mode \u003d \u0027all\u0027"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "MAll"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.style.backgroundColor": {
+                    "binding": {
+                      "config": {
+                        "expression": "if(coalesce({view.custom.mode}, \u0027all\u0027) \u003d \u0027all\u0027, \u0027#242E30\u0027, \u0027#FFFFFF\u0027)"
+                      },
+                      "type": "expr"
+                    }
+                  },
+                  "props.style.borderColor": {
+                    "binding": {
+                      "config": {
+                        "expression": "if(coalesce({view.custom.mode}, \u0027all\u0027) \u003d \u0027all\u0027, \u0027#242E30\u0027, \u0027#D5DADA\u0027)"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "alignItems": "center",
+                  "direction": "row",
+                  "justify": "center",
+                  "style": {
+                    "borderRadius": "6px",
+                    "borderStyle": "solid",
+                    "borderWidth": "1px",
+                    "boxSizing": "border-box",
+                    "cursor": "pointer",
+                    "height": "28px",
+                    "overflow": "hidden",
+                    "padding": "0px 12px"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Text"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "propConfig": {
+                      "props.style.color": {
+                        "binding": {
+                          "config": {
+                            "expression": "if(coalesce({view.custom.mode}, \u0027all\u0027) \u003d \u0027alarms\u0027, \u0027#FFFFFF\u0027, \u0027#242E30\u0027)"
+                          },
+                          "type": "expr"
+                        }
+                      }
+                    },
+                    "props": {
+                      "style": {
+                        "fontSize": "12px",
+                        "fontWeight": 700,
+                        "lineHeight": "26px",
+                        "whiteSpace": "nowrap"
+                      },
+                      "text": "ALARMS"
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "events": {
+                  "dom": {
+                    "onClick": {
+                      "config": {
+                        "script": "\tself.view.custom.mode \u003d \u0027alarms\u0027"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "MAlarms"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.style.backgroundColor": {
+                    "binding": {
+                      "config": {
+                        "expression": "if(coalesce({view.custom.mode}, \u0027all\u0027) \u003d \u0027alarms\u0027, \u0027#242E30\u0027, \u0027#FFFFFF\u0027)"
+                      },
+                      "type": "expr"
+                    }
+                  },
+                  "props.style.borderColor": {
+                    "binding": {
+                      "config": {
+                        "expression": "if(coalesce({view.custom.mode}, \u0027all\u0027) \u003d \u0027alarms\u0027, \u0027#242E30\u0027, \u0027#D5DADA\u0027)"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "alignItems": "center",
+                  "direction": "row",
+                  "justify": "center",
+                  "style": {
+                    "borderRadius": "6px",
+                    "borderStyle": "solid",
+                    "borderWidth": "1px",
+                    "boxSizing": "border-box",
+                    "cursor": "pointer",
+                    "height": "28px",
+                    "overflow": "hidden",
+                    "padding": "0px 12px"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Text"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "propConfig": {
+                      "props.style.color": {
+                        "binding": {
+                          "config": {
+                            "expression": "if(coalesce({view.custom.mode}, \u0027all\u0027) \u003d \u0027safety\u0027, \u0027#FFFFFF\u0027, \u0027#242E30\u0027)"
+                          },
+                          "type": "expr"
+                        }
+                      }
+                    },
+                    "props": {
+                      "style": {
+                        "fontSize": "12px",
+                        "fontWeight": 700,
+                        "lineHeight": "26px",
+                        "whiteSpace": "nowrap"
+                      },
+                      "text": "SAFETY + RESETS"
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "events": {
+                  "dom": {
+                    "onClick": {
+                      "config": {
+                        "script": "\tself.view.custom.mode \u003d \u0027safety\u0027"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "MSafety"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.style.backgroundColor": {
+                    "binding": {
+                      "config": {
+                        "expression": "if(coalesce({view.custom.mode}, \u0027all\u0027) \u003d \u0027safety\u0027, \u0027#242E30\u0027, \u0027#FFFFFF\u0027)"
+                      },
+                      "type": "expr"
+                    }
+                  },
+                  "props.style.borderColor": {
+                    "binding": {
+                      "config": {
+                        "expression": "if(coalesce({view.custom.mode}, \u0027all\u0027) \u003d \u0027safety\u0027, \u0027#242E30\u0027, \u0027#D5DADA\u0027)"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "alignItems": "center",
+                  "direction": "row",
+                  "justify": "center",
+                  "style": {
+                    "borderRadius": "6px",
+                    "borderStyle": "solid",
+                    "borderWidth": "1px",
+                    "boxSizing": "border-box",
+                    "cursor": "pointer",
+                    "height": "28px",
+                    "overflow": "hidden",
+                    "padding": "0px 12px"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "meta": {
+                  "name": "Spacer"
+                },
+                "position": {
+                  "basis": "0px",
+                  "grow": 1,
+                  "shrink": 1
+                },
+                "props": {},
+                "type": "ia.container.flex"
+              },
+              {
+                "meta": {
+                  "name": "Search",
+                  "tooltip": {
+                    "enabled": true,
+                    "text": "Search the history - alarm, device, group or who - then Enter"
+                  }
+                },
+                "position": {
+                  "basis": "230px",
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "bidirectional": true,
+                        "path": "view.custom.search"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "placeholder": "Search, then Enter",
+                  "style": {
+                    "border": "1px solid #D5DADA",
+                    "borderRadius": "6px",
+                    "boxSizing": "border-box",
+                    "fontSize": "12px",
+                    "height": "28px",
+                    "padding": "0px 8px"
+                  },
+                  "text": ""
+                },
+                "type": "ia.input.text-field"
+              }
+            ],
+            "meta": {
+              "name": "Filters"
+            },
+            "position": {
+              "basis": "28px",
+              "shrink": 0
+            },
+            "props": {
+              "alignItems": "center",
+              "direction": "row",
+              "style": {
+                "gap": "6px",
+                "overflow": "hidden"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "meta": {
+              "name": "Info"
+            },
+            "position": {
+              "basis": "18px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.style.color": {
+                "binding": {
+                  "config": {
+                    "expression": "try({view.custom.hist.infoColor}, \u0027#5F696B\u0027)"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "expression": "try({view.custom.hist.info}, \u0027\u0027)"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "fontSize": "11.5px",
+                "fontWeight": 600,
+                "lineHeight": "18px",
+                "overflow": "hidden",
+                "textOverflow": "ellipsis",
+                "whiteSpace": "nowrap"
+              },
+              "text": ""
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Table"
+            },
+            "position": {
+              "basis": "0px",
+              "grow": 1,
+              "shrink": 1
+            },
+            "propConfig": {
+              "props.data": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.hist.rows"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "bodyStyle": {
+                "backgroundColor": "#FFFFFF"
+              },
+              "cells": {
+                "style": {
+                  "borderStyle": "none",
+                  "fontSize": 12,
+                  "outlineStyle": "none",
+                  "padding": "0px 8px"
+                }
+              },
+              "columns": [
+                {
+                  "align": "center",
+                  "field": "when",
+                  "header": {
+                    "align": "center",
+                    "justify": "left",
+                    "style": {
+                      "backgroundColor": "#F6F7F7",
+                      "color": "#5F696B",
+                      "fontSize": "10px",
+                      "fontWeight": 700,
+                      "letterSpacing": "0.05em"
+                    },
+                    "title": "WHEN"
+                  },
+                  "justify": "left",
+                  "sortable": false,
+                  "style": {
+                    "fontSize": "12px"
+                  },
+                  "visible": true,
+                  "width": 126
+                },
+                {
+                  "align": "center",
+                  "field": "type",
+                  "header": {
+                    "align": "center",
+                    "justify": "center",
+                    "style": {
+                      "backgroundColor": "#F6F7F7",
+                      "color": "#5F696B",
+                      "fontSize": "10px",
+                      "fontWeight": 700,
+                      "letterSpacing": "0.05em"
+                    },
+                    "title": "TYPE"
+                  },
+                  "justify": "center",
+                  "sortable": false,
+                  "style": {
+                    "fontSize": "12px"
+                  },
+                  "visible": true,
+                  "width": 70
+                },
+                {
+                  "align": "center",
+                  "field": "what",
+                  "header": {
+                    "align": "center",
+                    "justify": "left",
+                    "style": {
+                      "backgroundColor": "#F6F7F7",
+                      "color": "#5F696B",
+                      "fontSize": "10px",
+                      "fontWeight": 700,
+                      "letterSpacing": "0.05em"
+                    },
+                    "title": "WHAT"
+                  },
+                  "justify": "left",
+                  "sortable": false,
+                  "style": {
+                    "fontSize": "12px"
+                  },
+                  "visible": true,
+                  "width": 296
+                },
+                {
+                  "align": "center",
+                  "field": "detail",
+                  "header": {
+                    "align": "center",
+                    "justify": "left",
+                    "style": {
+                      "backgroundColor": "#F6F7F7",
+                      "color": "#5F696B",
+                      "fontSize": "10px",
+                      "fontWeight": 700,
+                      "letterSpacing": "0.05em"
+                    },
+                    "title": "DETAIL"
+                  },
+                  "justify": "left",
+                  "sortable": false,
+                  "style": {
+                    "fontSize": "12px"
+                  },
+                  "visible": true,
+                  "width": 272
+                },
+                {
+                  "align": "center",
+                  "field": "state",
+                  "header": {
+                    "align": "center",
+                    "justify": "left",
+                    "style": {
+                      "backgroundColor": "#F6F7F7",
+                      "color": "#5F696B",
+                      "fontSize": "10px",
+                      "fontWeight": 700,
+                      "letterSpacing": "0.05em"
+                    },
+                    "title": "STATE"
+                  },
+                  "justify": "left",
+                  "sortable": false,
+                  "style": {
+                    "fontSize": "12px"
+                  },
+                  "visible": true,
+                  "width": 128
+                },
+                {
+                  "align": "center",
+                  "field": "lasted",
+                  "header": {
+                    "align": "center",
+                    "justify": "center",
+                    "style": {
+                      "backgroundColor": "#F6F7F7",
+                      "color": "#5F696B",
+                      "fontSize": "10px",
+                      "fontWeight": 700,
+                      "letterSpacing": "0.05em"
+                    },
+                    "title": "LASTED"
+                  },
+                  "justify": "center",
+                  "sortable": false,
+                  "style": {
+                    "fontSize": "12px"
+                  },
+                  "visible": true,
+                  "width": 80
+                },
+                {
+                  "align": "center",
+                  "field": "by",
+                  "header": {
+                    "align": "center",
+                    "justify": "left",
+                    "style": {
+                      "backgroundColor": "#F6F7F7",
+                      "color": "#5F696B",
+                      "fontSize": "10px",
+                      "fontWeight": 700,
+                      "letterSpacing": "0.05em"
+                    },
+                    "title": "BY"
+                  },
+                  "justify": "left",
+                  "sortable": false,
+                  "style": {
+                    "fontSize": "12px"
+                  },
+                  "visible": true,
+                  "width": 84
+                }
+              ],
+              "emptyMessage": {
+                "noData": {
+                  "text": "nothing in this range"
+                }
+              },
+              "headerStyle": {
+                "backgroundColor": "#F6F7F7"
+              },
+              "pager": {
+                "bottom": false
+              },
+              "rows": {
+                "height": 24,
+                "striped": {
+                  "enabled": false
+                }
+              },
+              "style": {
+                "backgroundColor": "#FFFFFF",
+                "border": "1px solid #DDE1E1",
+                "borderRadius": "6px",
+                "fontSize": "12px",
+                "overflow": "hidden"
+              }
+            },
+            "type": "ia.display.table"
+          }
+        ],
+        "meta": {
+          "name": "History"
+        },
+        "position": {
+          "basis": "0px",
+          "grow": 1,
+          "shrink": 1
+        },
+        "propConfig": {
+          "position.display": {
+            "binding": {
+              "config": {
+                "expression": "coalesce({view.custom.tab}, \u0027active\u0027) \u003d \u0027history\u0027"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "gap": "6px",
+            "minHeight": "0px",
+            "overflow": "hidden"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "backgroundColor": "#FFFFFF",
+        "boxSizing": "border-box",
+        "gap": "8px",
+        "overflow": "hidden",
+        "padding": "14px 18px"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

@@ -1,0 +1,209 @@
+windows: [357030, 18, Sun Apr 05 00:00:00 NZDT 2026, Wed Oct 28 14:30:00 NZDT 2026]
+== 1. regression: 1.0.4 vs 1.0.5, no reference set by hand
+   DB P1   ok        band  0 score   0.0  normal
+   DB P2   ok        band  0 score   0.0  normal
+   DB P3   ok        band  0 score   0.0  normal
+   DB P4   ok        band  0 score   0.0  normal
+   DB P5   ok        band  0 score   0.0  normal
+   DB P6   ok        band  2 score  80.0  -24 bar since Apr
+   GRA P1  ok        band  2 score  80.0  -62 bar since Apr
+   GRA P2  ok        band  0 score   0.0  normal
+   GRA P3  ok        band  0 score   0.0  normal
+   COS1 P1 ok        band  0 score   0.0  normal
+   COS1 P2 ok        band  0 score   0.0  normal
+   COS1 P3 ok        band  0 score   0.0  normal
+   COS3 P1 ok        band  1 score  75.9  5.4 degC hotter
+   COS3 P2 ok        band  1 score  65.4  -10 bar since Apr
+   TNB P1  ok        band  0 score   0.0  normal
+   TNB P2  ok        band  0 score   0.0  normal
+   TNB P3  ok        band  0 score   0.0  normal
+   TNB P4  ok        band  0 score   0.0  normal
+== 2. rebase() dry
+forensics.hydPump v1.0.6  rebase  Wed 28 Oct 15:00  DRY RUN - nothing written
+  moved = the last 14 days 8 bar or 4 degC or more from the reference, either way; step = most of it across one day
+
+DB P1   Debarker Pump 1 - 8643 judged windows since 16 Apr
+        P by month  Apr 138.0 | May 138.0 | Jun 138.0 | Jul 138.0 | Aug 138.0 | Sep 138.0 | Oct 138.0
+        reference   16 Apr to 15 May  n 1300  P 138.0  T -0.7  in use
+        8 weeks     n 2360  P 138.0  T -0.7    last 14 days  n  619  P 138.0  T -0.7
+        moved       P +0.0 bar, T -0.0 degC against the reference
+        card        NORMAL 0  normal
+
+DB P2   Debarker Pump 2 - 8643 judged windows since 16 Apr
+        P by month  Apr 137.0 | May 137.0 | Jun 137.0 | Jul 137.0 | Aug 137.0 | Sep 137.0 | Oct 137.0
+        reference   16 Apr to 15 May  n 1300  P 137.0  T -2.2  in use
+        8 weeks     n 2360  P 137.0  T -2.2    last 14 days  n  619  P 137.0  T -2.2
+        moved       P -0.0 bar, T +0.0 degC against the reference
+        card        NORMAL 0  normal
+
+DB P3   Debarker Pump 3 - 8643 judged windows since 16 Apr
+        P by month  Apr 138.1 | May 138.0 | Jun 138.0 | Jul 138.0 | Aug 138.0 | Sep 138.0 | Oct 137.9
+        reference   16 Apr to 15 May  n 1300  P 138.0  T -4.7  in use
+        8 weeks     n 2360  P 138.0  T -4.7    last 14 days  n  619  P 138.0  T -4.7
+        moved       P -0.1 bar, T -0.0 degC against the reference
+        card        NORMAL 0  normal
+
+DB P4   Debarker Pump 4 - 8643 judged windows since 16 Apr
+        P by month  Apr 130.0 | May 130.0 | Jun 130.0 | Jul 130.0 | Aug 130.0 | Sep 130.0 | Oct 130.0
+        reference   16 Apr to 15 May  n 1300  P 130.0  T -1.0  in use
+        8 weeks     n 2360  P 130.0  T -1.0    last 14 days  n  619  P 129.9  T -1.0
+        moved       P -0.0 bar, T -0.0 degC against the reference
+        card        NORMAL 0  normal
+
+DB P5   Debarker Pump 5 (HydUnit2 Pump 1) - 8643 judged windows since 16 Apr
+        P by month  Apr 110.0 | May 110.0 | Jun 110.0 | Jul 110.0 | Aug 110.0 | Sep 110.0 | Oct 110.0
+        reference   16 Apr to 15 May  n 1300  P 110.0  T +2.5  in use
+        8 weeks     n 2360  P 110.0  T +2.5    last 14 days  n  619  P 110.0  T +2.5
+        moved       P -0.0 bar, T -0.0 degC against the reference
+        card        NORMAL 0  normal
+
+DB P6   Debarker Pump 6 (HydUnit2 Pump 2) - 8643 judged windows since 16 Apr
+        P by month  Apr 135.0 | May 135.0 | Jun 135.0 | Jul 135.0 | Aug 135.0 | Sep 134.8 | Oct 111.0
+        reference   16 Apr to 15 May  n 1300  P 135.0  T -2.5  in use
+        8 weeks     n 2360  P 111.6  T -2.5    last 14 days  n  619  P 111.1  T -2.5
+        moved       P -23.9 bar, T +0.0 degC against the reference; P steps on Fri 25 Sep (week before 135.0, from it 111.0)
+        new ref     26 Sep to 24 Oct  n 1240  P 111.0  T -2.5  - long check from 5 Dec; 8 weeks from 26 Sep
+        card        now HOT 80  -24 bar since Apr  ->  rebased NORMAL 0  normal
+
+GRA P1  Grading Pump 1 (drive) - 8953 judged windows since 9 Apr
+        P by month  Apr 116.5 | May 52.5 | Jun 52.5 | Jul 52.5 | Aug 52.5 | Sep 54.5 | Oct 54.5
+        reference   9 Apr to 8 May  n 1300  P 116.2  T +0.0  in use
+        8 weeks     n 2360  P 54.5  T -0.0    last 14 days  n  619  P 54.5  T +0.0
+        moved       P -61.8 bar, T -0.0 degC against the reference; P steps on Fri 1 May (week before 116.5, from it 52.6)
+        new ref     2 May to 30 May  n 1240  P 52.5  T +0.0  - in use at once; 8 weeks as before
+        card        now HOT 80  -62 bar since Apr  ->  rebased NORMAL 0  normal
+
+GRA P2  Grading Pump 2 (cylinder) - 8953 judged windows since 9 Apr
+        P by month  Apr 127.0 | May 127.0 | Jun 127.0 | Jul 127.0 | Aug 127.0 | Sep 127.0 | Oct 127.0
+        reference   9 Apr to 8 May  n 1300  P 127.0  T -1.5  in use
+        8 weeks     n 2360  P 127.0  T -1.5    last 14 days  n  619  P 127.0  T -1.5
+        moved       P +0.1 bar, T +0.0 degC against the reference
+        card        NORMAL 0  normal
+
+GRA P3  Grading Pump 3 (cylinder) - 8953 judged windows since 9 Apr
+        P by month  Apr 128.9 | May 129.0 | Jun 129.0 | Jul 129.0 | Aug 129.0 | Sep 129.0 | Oct 129.0
+        reference   9 Apr to 8 May  n 1300  P 128.9  T +0.1  in use
+        8 weeks     n 2360  P 129.0  T +0.1    last 14 days  n  619  P 129.0  T +0.1
+        moved       P +0.0 bar, T +0.0 degC against the reference
+        card        NORMAL 0  normal
+
+COS1 P1 COS HydUnit1 Pump 1 - 8643 judged windows since 16 Apr
+        P by month  Apr 114.0 | May 114.0 | Jun 114.0 | Jul 114.0 | Aug 114.0 | Sep 114.0 | Oct 114.0
+        reference   16 Apr to 15 May  n 1300  P 114.0  T -2.2  in use
+        8 weeks     n 2360  P 114.0  T -2.2    last 14 days  n  619  P 114.0  T -2.2
+        moved       P +0.0 bar, T +0.0 degC against the reference
+        card        NORMAL 0  normal
+
+COS1 P2 COS HydUnit1 Pump 2 - 8643 judged windows since 16 Apr
+        P by month  Apr 115.0 | May 115.0 | Jun 115.0 | Jul 115.0 | Aug 115.0 | Sep 115.0 | Oct 115.0
+        reference   16 Apr to 15 May  n 1300  P 115.0  T -3.0  in use
+        8 weeks     n 2360  P 115.0  T -3.0    last 14 days  n  619  P 115.0  T -3.0
+        moved       P +0.0 bar, T -0.0 degC against the reference
+        card        NORMAL 0  normal
+
+COS1 P3 COS HydUnit1 Pump 3 - 8643 judged windows since 16 Apr
+        P by month  Apr 114.0 | May 114.0 | Jun 114.0 | Jul 114.0 | Aug 114.0 | Sep 114.0 | Oct 114.0
+        reference   16 Apr to 15 May  n 1300  P 114.0  T +0.5  in use
+        8 weeks     n 2360  P 114.0  T +0.5    last 14 days  n  619  P 114.0  T +0.5
+        moved       P -0.0 bar, T +0.0 degC against the reference
+        card        NORMAL 0  normal
+
+COS3 P1 COS HydUnit3 Pump 1 - 8643 judged windows since 16 Apr
+        P by month  Apr 114.0 | May 114.0 | Jun 114.0 | Jul 114.0 | Aug 114.0 | Sep 114.0 | Oct 114.0
+        reference   16 Apr to 15 May  n 1300  P 114.0  T +0.2  in use
+        8 weeks     n 2360  P 114.0  T +0.5    last 14 days  n  619  P 114.0  T +5.9
+        moved       P -0.0 bar, T +5.7 degC against the reference; T steps on Thu 1 Oct (week before 0.2, from it 5.9)
+        new ref     2 Oct to 28 Oct  n 1116  P 114.0  T +5.9  - long check from 9 Dec; 8 weeks from 2 Oct
+        card        now WATCH 76  5.4 degC hotter  ->  rebased NORMAL 0  normal
+
+COS3 P2 COS HydUnit3 Pump 2 - 8643 judged windows since 16 Apr
+        P by month  Apr 123.9 | May 124.0 | Jun 123.0 | Jul 120.6 | Aug 118.3 | Sep 116.1 | Oct 114.3
+        reference   16 Apr to 15 May  n 1300  P 124.0  T +2.2  in use
+        8 weeks     n 2360  P 115.2  T +2.2    last 14 days  n  619  P 114.0  T +2.2
+        moved       P -10.0 bar, T -0.0 degC against the reference; P drifts on Fri 7 Aug (week before 119.3, from it 118.6)
+        card        WATCH 65  -10 bar since Apr  - DRIFT: moved slowly, not rebased (it may be wear)
+
+TNB P1  T&B Pump 1 (Big John crane) - 449 judged windows since 19 Oct
+        P by month  Oct 168.0
+        reference   none yet - its first 1344 windows of running at pressure
+        8 weeks     n  326  P 168.0  T -0.1    last 14 days  n  449  P 168.0  T -0.1
+        moved       - no reference to judge it against yet
+        card        NORMAL 0  normal
+
+TNB P2  T&B Pump 2 (star loader) - 8643 judged windows since 16 Apr
+        P by month  Apr 115.0 | May 115.0 | Jun 115.0 | Jul 115.0 | Aug 168.7 | Sep 169.0 | Oct 169.0
+        reference   16 Apr to 15 May  n 1300  P 115.0  T +5.6  in use
+        8 weeks     n 2360  P 169.0  T +5.6    last 14 days  n  619  P 169.1  T +5.6
+        moved       P +54.0 bar, T -0.0 degC against the reference; P steps on Mon 10 Aug (week before 115.0, from it 169.0)
+        new ref     11 Aug to 8 Sep  n 1240  P 169.0  T +5.6  - in use at once; 8 weeks as before
+        card        now NORMAL 0  normal  ->  rebased NORMAL 0  normal
+
+TNB P3  T&B Pump 3 - 8643 judged windows since 16 Apr
+        P by month  Apr 115.0 | May 115.0 | Jun 115.0 | Jul 115.0 | Aug 115.0 | Sep 115.0 | Oct 115.0
+        reference   16 Apr to 15 May  n 1300  P 115.0  T -0.4  in use
+        8 weeks     n 2360  P 115.0  T -0.4    last 14 days  n  619  P 115.0  T -0.4
+        moved       P +0.0 bar, T -0.0 degC against the reference
+        card        NORMAL 0  normal
+
+TNB P4  T&B Pump 4 - 8643 judged windows since 16 Apr
+        P by month  Apr 115.0 | May 115.0 | Jun 115.0 | Jul 115.0 | Aug 115.0 | Sep 115.0 | Oct 115.0
+        reference   16 Apr to 15 May  n 1300  P 115.0  T -1.6  in use
+        8 weeks     n 2360  P 115.0  T -1.6    last 14 days  n  619  P 115.0  T -1.6
+        moved       P +0.1 bar, T +0.0 degC against the reference
+        card        NORMAL 0  normal
+
+SUMMARY
+  rebase: DB P6 from 26 Sep, GRA P1 from 2 May, COS3 P1 from 2 Oct, TNB P2 from 11 Aug
+  drift - moved slowly, left alone (may be wear; force=[...] to rebase): COS3 P2
+  steps by day (a swap between two pumps steps both the same day):
+    Fri 1 May 2026  GRA P1 P -64.0
+    Mon 10 Aug 2026  TNB P2 P +54.0
+    Fri 25 Sep 2026  DB P6 P -24.1
+    Thu 1 Oct 2026  COS3 P1 T +5.7
+DRY RUN - nothing written. rebase(False) writes these references (force / skip change the list).
+
+== 3. rebase(False), then the running gateway refreshes 15 min later
+Debarker Pump 6 (HydUnit2 Pump 2): reference 2026-09-26 to 2026-10-24 (sensor swap or pump change - its level since the step (rebase)) - used from 42 days after its end; the gateway takes it at its next refresh
+Grading Pump 1 (drive): reference 2026-05-02 to 2026-05-30 (sensor swap or pump change - its level since the step (rebase)) - used from 42 days after its end; the gateway takes it at its next refresh
+COS HydUnit3 Pump 1: reference 2026-10-02 to 2026-10-28 (sensor swap or pump change - its level since the step (rebase)) - used from 42 days after its end; the gateway takes it at its next refresh
+T&B Pump 2 (star loader): reference 2026-08-11 to 2026-09-08 (sensor swap or pump change - its level since the step (rebase)) - used from 42 days after its end; the gateway takes it at its next refresh
+written - the gateway takes them at its next refresh (within 15 min) and judges these pumps afresh
+   pump_ref: [['COS_U3P1', '2026-10-02', '2026-10-28', 'sensor swap or pump change - its level since the step (rebase)', True], ['GRA_U1P1', '2026-05-02', '2026-05-30', 'sensor swap or pump change - its level since the step (rebase)', True], ['SDB_U2P2', '2026-09-26', '2026-10-24', 'sensor swap or pump change - its level since the step (rebase)', True], ['TNB_U4P2', '2026-08-11', '2026-09-08', 'sensor swap or pump change - its level since the step (rebase)', True]]
+   DB P1   ok        band  0 score   0.0  normal
+   DB P2   ok        band  0 score   0.0  normal
+   DB P3   ok        band  0 score   0.0  normal
+   DB P4   ok        band  0 score   0.0  normal
+   DB P5   ok        band  0 score   0.0  normal
+   DB P6   ok        band  0 score   0.0  normal
+   GRA P1  ok        band  0 score   0.0  normal
+   GRA P2  ok        band  0 score   0.0  normal
+   GRA P3  ok        band  0 score   0.0  normal
+   COS1 P1 ok        band  0 score   0.0  normal
+   COS1 P2 ok        band  0 score   0.0  normal
+   COS1 P3 ok        band  0 score   0.0  normal
+   COS3 P1 ok        band  0 score   0.0  normal
+   COS3 P2 ok        band  1 score  65.4  -10 bar since Apr
+   TNB P1  ok        band  0 score   0.0  normal
+   TNB P2  ok        band  0 score   0.0  normal
+   TNB P3  ok        band  0 score   0.0  normal
+   TNB P4  ok        band  0 score   0.0  normal
+   pump_band: {'SDB_U1P1': 0, 'SDB_U1P2': 0, 'SDB_U1P3': 0, 'SDB_U1P4': 0, 'SDB_U2P1': 0, 'GRA_U1P2': 0, 'GRA_U1P3': 0, 'COS_U1P1': 0, 'COS_U1P2': 0, 'COS_U1P3': 0, 'TNB_U4P1': 0, 'TNB_U4P2': 0, 'TNB_U4P3': 0, 'TNB_U4P4': 0, 'SDB_U2P2': 0, 'GRA_U1P1': 0, 'COS_U3P2': 1, 'COS_U3P1': 0}
+   DB P6 baseline from Sat Sep 26 00:00:00 NZDT 2026 n 1275 P 111.0
+== 4. reload after the rebase (bands in the table from before it)
+   DB P6: 0 normal | GRA P1: 2 HOT held, now normal
+== 5. replay, the updated-column fallback, set_reference guard, force / skip
+  Tue 27 Oct 07:00  measuring measuring 3 h of 4
+  Wed 28 Oct 07:00  measuring measuring 3 h of 4
+  share: normal 58 %  watch 0 %  hot 0 %  not judged 41 %   (normal and standby passes not listed)
+  baseline at the end: n 1266  P  111.0 +-  1.0 (p05 110.3)  D   5.0 +-  1.5  T  -2.5 +- 0.5 (n 1266)  range P 7.99 T 0.60
+   force DB P1, skip GRA P1:  DB P1 from 30 Sep, DB P6 from 26 Sep, COS3 P1 from 2 Oct, TNB P2 from 11 Aug
+== 6. 1.0.6 - month reads, a read that fails once, a pump that cannot be read, only=
+   DB P2 reads: 7 | NOT READ in output: False
+DB P2   Debarker Pump 2 - NOT READ after 3 tries (java.util.concurrent.TimeoutException: Idle timeout expired: 60010/60000 ms (test)): nothing written for it
+  rebase: DB P6 from 26 Sep, GRA P1 from 2 May, COS3 P1 from 2 Oct, TNB P2 from 11 Aug
+  NOT READ: DB P2 - run it again for them: rebase(False, only=["DB P2"])
+written - the gateway takes them at its next refresh (within 15 min) and judges these pumps afresh
+   written: [['COS_U3P1'], ['GRA_U1P1'], ['SDB_U2P2'], ['TNB_U4P2']]
+   only DB P6 - pumps read: ['SDB_U2P2']
+
+FAILS: 0
